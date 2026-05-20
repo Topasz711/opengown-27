@@ -27,7 +27,7 @@ const Home = () => {
               Opengown Camp 27th
             </h1>
             <p className="text-xl md:text-2xl mb-2 text-blue-100">
-              ค่ายเปิดหมวกวชิรพยาบาล ครั้งที่ 27
+              ค่ายเปิดเสื้อกาวน์ ครั้งที่ 27
             </p>
             <p className="text-lg md:text-xl mb-8 text-blue-200">
               "สัมผัสประสบการณ์แพทย์ เปิดประตูสู่วชิรพยาบาล"
@@ -61,8 +61,8 @@ const Home = () => {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
             {[
-              { icon: Users, value: '200+', label: 'ผู้เข้าร่วม' },
-              { icon: Award, value: '3', label: 'วัน 2 คืน' },
+              { icon: Users, value: '100+', label: 'ผู้เข้าร่วม' },
+              { icon: Award, value: '3', label: 'วัน' },
               { icon: Heart, value: '10+', label: 'เวิร์กช็อป' },
               { icon: Rocket, value: '27', label: 'ครั้งที่' }
             ].map((stat, index) => {

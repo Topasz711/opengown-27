@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Opengown Camp 27th</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              ค่ายเปิดหมวกวชิรพยาบาล ครั้งที่ 27
+              ค่ายเปิดเสื้อกาวน์ ครั้งที่ 27
               ประสบการณ์เรียนรู้จากคณะแพทยศาสตร์วชิรพยาบาล
               เปิดโอกาสให้น้องๆ ได้สัมผัสชีวิตการเป็นนักศึกษาแพทย์
             </p>
@@ -71,7 +71,7 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex space-x-4 mt-4">
               <a
-                href="https://facebook.com/opengown27"
+                href="https://facebook.com/OpengownCamp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -79,7 +79,7 @@ const Footer = () => {
                 <Facebook size={24} />
               </a>
               <a
-                href="https://instagram.com/opengown27"
+                href="https://instagram.com/opengowncamp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
