@@ -1,1 +1,47 @@
-Nothing should be ignored since the changes only include source code files (.jsx) and no build artifacts, dependencies, or temporary files.
+```gitignore
+# Dependencies
+node_modules/
+
+# Build artifacts
+frontend/node_modules/
+
+# Vite specific
+frontend/node_modules/.vite/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
+
+# Python cache (if any Python files were detected in the project)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / Build folders (common names)
+dist/
+build/
+target/
+out/
+coverage/
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+.gradle/
+```

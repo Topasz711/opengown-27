@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react'
-import { authAPI } from '../../services/api'
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -27,24 +26,26 @@ const Login = () => {
         u => u.email === formData.email && u.password === formData.password
       )
 
-      setTimeout(() => {
-        if (!user) {
-          setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
-          setLoading(false)
-          return
-        }
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 500))
 
-        // Login successful
-        localStorage.setItem('token', 'demo-token-' + Date.now())
-        localStorage.setItem('user', JSON.stringify({
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          status: user.status || 'pending'
-        }))
-        navigate('/dashboard')
-      }, 500)
+      if (!user) {
+        setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+        setLoading(false)
+        return
+      }
+
+      // Login successful
+      localStorage.setItem('token', 'demo-token-' + Date.now())
+      localStorage.setItem('user', JSON.stringify({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        status: user.status || 'pending'
+      }))
+      navigate('/dashboard')
     } catch (err) {
+      console.error('Login error:', err)
       setError('เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       setLoading(false)
     }
