@@ -1,0 +1,113 @@
+import React, { useState } from 'react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+
+const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const faqs = [
+    {
+      question: 'เด็กซิ่วสมัครได้ไหม?',
+      answer: 'ได้ครับ! ค่าย Opengown Camp เปิดรับน้องๆ ที่กำลังศึกษาอยู่ในระดับชั้น ม.ปลาย หรือเทียบเท่า รวมถึงน้องๆ ที่กำลังเตรียมสอบเข้ามหาวิทยาลัย (เด็กซิ่ว) ก็สามารถสมัครได้เช่นกัน'
+    },
+    {
+      question: 'สายศิลป์สมัครได้ไหม?',
+      answer: 'ได้ครับ! ค่ายของเรายินดีต้อนรับน้องๆ ทุกแผนการเรียน ไม่ว่าจะเป็นสายวิทย์-คณิต สายศิลป์-คำนวณ หรือสายศิลป์-ภาษา เพราะเราเชื่อว่าทุกคนมีความสนใจในวิชาชีพแพทย์ได้ equally'
+    },
+    {
+      question: 'ค่าใช้จ่ายเท่าไหร่?',
+      answer: 'ค่าย Opengown Camp 27th ไม่เสียค่าใช้จ่ายใดๆ ทั้งสิ้น โดยทางคณะแพทยศาสตร์วชิรพยาบาลจะเป็นผู้ออกค่าใช้จ่ายในการจัดค่ายทั้งหมด รวมถึงอาหารและที่พัก selama กิจกรรม'
+    },
+    {
+      question: 'รับสมัครกี่คน?',
+      answer: 'ค่ายรับผู้เข้าร่วมประมาณ 150-200 คน ต่อรุ่น โดยคัดเลือกจากใบสมัครและข้อสอบเรียงความ'
+    },
+    {
+      question: 'ต้องพักที่โรงพยาบาลไหม?',
+      answer: 'ใช่ครับ ค่ายของเราเป็นค่าย 3 วัน 2 คืน ผู้เข้าร่วมจะต้องพักค้างคืนที่หอพักของคณะแพทยศาสตร์วชิรพยาบาล ตามที่กำหนด'
+    },
+    {
+      question: 'มีเสื้อผ้าให้ใส่ไหม?',
+      answer: 'ทางค่ายจะจัดเสื้อค่ายให้ผู้เข้าร่วมทุกคน ส่วนกางเกง/กระโปรง ให้น้องๆ เตรียมมาเองตามคำแนะนำในเอกสารยืนยันสิทธิ์'
+    },
+    {
+      question: 'ถ้าติดโควิดหรือป่วย จะทำอย่างไร?',
+      answer: 'หากผู้เข้าร่วมมีอาการป่วยหรือติดเชื้อก่อนวันค่าย กรุณาแจ้งทีมงานทันที เราจะพิจารณาเป็นกรณีไป อาจมีการเลื่อนการเข้าร่วมหรือ refund ในบางกรณี'
+    },
+    {
+      question: 'สามารถขอใบรับรองการเข้าร่วมค่ายได้ไหม?',
+      answer: 'ได้ครับ ผู้เข้าร่วมจะได้รับประกาศนียบัตรหลังเสร็จสิ้นกิจกรรมค่าย ซึ่งสามารถใช้ประกอบการสมัครเรียนหรือทำ Portfolio ได้'
+    },
+    {
+      question: 'ผู้ปกครองสามารถเข้ามาดูกิจกรรมได้ไหม?',
+      answer: 'เนื่องจากพื้นที่ในโรงพยาบาลมีจำกัด และเพื่อความปลอดภัยของผู้เข้าร่วม กิจกรรมค่ายจึงเปิดเฉพาะผู้ที่ผ่านการคัดเลือกเท่านั้น ขออภัยที่ไม่สามารถอนุญาตให้ผู้ปกครองเข้าชมได้'
+    },
+    {
+      question: 'ถ้าไม่ผ่านการคัดเลือก สามารถสมัครใหม่ได้ไหม?',
+      answer: 'ได้ครับ! น้องๆ สามารถสมัครใหม่ในรุ่นถัดไปได้ เราขอให้กำลังใจและไม่ท้อแท้ เพราะการคัดเลือกมีจำนวนที่นั่งจำกัด'
+    }
+  ]
+
+  return (
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          คำถามที่พบบ่อย (FAQ)
+        </h1>
+        <p className="text-center text-gray-600 mb-12">
+          รวบรวมคำถามที่น้องๆ มักถามบ่อยๆ เกี่ยวกับค่าย Opengown Camp 27th
+        </p>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="card overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full flex items-center justify-between text-left p-4 hover:bg-gray-50 transition-colors"
+              >
+                <span className="font-semibold text-gray-800 pr-4">
+                  {faq.question}
+                </span>
+                {openIndex === index ? (
+                  <ChevronUp size={20} className="text-primary flex-shrink-0" />
+                ) : (
+                  <ChevronDown size={20} className="text-gray-400 flex-shrink-0" />
+                )}
+              </button>
+              
+              {openIndex === index && (
+                <div className="px-4 pb-4 pt-2 border-t border-gray-100">
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Still Have Questions */}
+        <div className="mt-12 text-center">
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              ยังมีคำถามอื่นๆ?
+            </h2>
+            <p className="text-gray-600 mb-6">
+              หากน้องๆ มีคำถามเพิ่มเติม สามารถติดต่อเราได้ผ่านช่องทางต่างๆ
+            </p>
+            <a
+              href="/contact"
+              className="inline-block btn-primary"
+            >
+              ติดต่อเรา
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default FAQ
