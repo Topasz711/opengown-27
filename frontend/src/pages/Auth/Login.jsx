@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Mail, Lock, User, Eye, EyeOff } from 'lucide-react'
-import { authAPI } from '../services/api'
+import { authAPI } from '../../services/api'
 
 const Login = () => {
   const navigate = useNavigate()
