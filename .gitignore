@@ -1,29 +1,33 @@
 ```
+# Dependencies
+frontend/node_modules/
+
 # Build artifacts
 frontend/dist/
-build/
-dist/
+frontend/build/
 
-# Dependencies
-node_modules/
+# Development files
+frontend/.vite/
 
-# Environment
+# Logs
+*.log
+
+# Environment variables
 .env
 .env.local
 .env.*
 
-# Editors
+# IDE
 .vscode/
 .idea/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
 
 # Coverage
 coverage/
@@ -35,63 +39,15 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.Python
-*.so
-*.egg-info/
-.eggs/
-.mypy_cache/
 .pytest_cache/
-.tox/
+.mypy_cache/
 
 # Node.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Java
-*.class
-*.jar
-*.war
-*.ear
-*.iml
-*.ipr
-*.iws
-.classpath
-.project
-
-# C/C++
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.lib
-
-# Go
-*.exe
-*.test
-*.prof
-*.out
-
-# Rust
-target/
-*.rlib
-
-# Gradle
-.gradle/
-build/
-
-# Maven
-target/
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.backup
-
-# Archives
+# Compression
 *.zip
 *.gz
 *.tar
@@ -114,4 +70,5 @@ target/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
 ```
