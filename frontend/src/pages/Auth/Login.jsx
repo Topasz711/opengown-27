@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
@@ -18,42 +20,11 @@ const Login = () => {
     setLoading(true)
 
     try {
-      // Get registered users from localStorage
-      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-      
-      console.log('Attempting login with:', formData.email)
-      console.log('Registered users count:', registeredUsers.length)
-      console.log('Registered users:', registeredUsers.map(u => ({ email: u.email, name: u.name })))
-      
-      // Find user with matching email and password
-      const user = registeredUsers.find(
-        u => u.email === formData.email && u.password === formData.password
-      )
-
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 500))
-
-      if (!user) {
-        console.error('Login failed: User not found or password incorrect')
-        setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
-        setLoading(false)
-        return
-      }
-
-      console.log('Login successful for user:', user.email)
-
-      // Login successful
-      localStorage.setItem('token', 'demo-token-' + Date.now())
-      localStorage.setItem('user', JSON.stringify({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        status: user.status || 'pending'
-      }))
+      await login(formData.email, formData.password)
       navigate('/dashboard')
     } catch (err) {
       console.error('Login error:', err)
-      setError('เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      setError(err.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       setLoading(false)
     }
   }
@@ -139,22 +110,47 @@ const Login = () => {
           {/* Google Login */}
           <div className="mt-6">
             <button 
-              onClick={() => {
-                console.log('Google login initiated')
-                // Simulated Google Login
-                setTimeout(() => {
-                  const googleUser = {
-                    id: Date.now(),
-                    name: 'Google User',
-                    email: 'googleuser@gmail.com',
-                    status: 'active',
-                    provider: 'google'
+              onClick={async () => {
+                try {
+                  // Simulated Google Login - create user if not exists
+                  const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
+                  const googleEmail = 'googleuser@gmail.com'
+                  
+                  let existingGoogleUser = registeredUsers.find(u => u.email === googleEmail)
+                  
+                  if (!existingGoogleUser) {
+                    // Create new Google user
+                    const newUser = {
+                      id: Date.now(),
+                      name: 'Google User',
+                      email: googleEmail,
+                      status: 'active',
+                      provider: 'google',
+                      password: '',
+                      createdAt: new Date().toISOString()
+                    }
+                    registeredUsers.push(newUser)
+                    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
+                    existingGoogleUser = newUser
                   }
-                  console.log('Google login successful:', googleUser)
+                  
+                  // Login the Google user
+                  const userData = {
+                    id: existingGoogleUser.id,
+                    name: existingGoogleUser.name,
+                    email: existingGoogleUser.email,
+                    status: existingGoogleUser.status
+                  }
+                  
                   localStorage.setItem('token', 'google-token-' + Date.now())
-                  localStorage.setItem('user', JSON.stringify(googleUser))
+                  localStorage.setItem('user', JSON.stringify(userData))
+                  
+                  // Update auth context state
+                  window.dispatchEvent(new Event('storage'))
                   navigate('/dashboard')
-                }, 500)
+                } catch (err) {
+                  console.error('Google login error:', err)
+                }
               }}
               className="w-full flex items-center justify-center gap-3 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >

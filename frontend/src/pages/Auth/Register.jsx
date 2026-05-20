@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import { Mail, Lock, User, Phone, Eye, EyeOff } from 'lucide-react'
 
 const Register = () => {
   const navigate = useNavigate()
+  const { register } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
@@ -36,21 +38,8 @@ const Register = () => {
     setLoading(true)
 
     try {
-      // Get existing users from localStorage
-      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-      
-      // Check if email already exists
-      const emailExists = registeredUsers.some(u => u.email === formData.email)
-      
-      if (emailExists) {
-        setError('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่น')
-        setLoading(false)
-        return
-      }
-
-      // Create new user
-      const newUser = {
-        id: Date.now(),
+      // Register user using AuthContext
+      await register({
         firstName: formData.firstName,
         lastName: formData.lastName,
         name: `${formData.firstName} ${formData.lastName}`,
@@ -58,34 +47,16 @@ const Register = () => {
         password: formData.password,
         phone: formData.phone,
         school: formData.school,
-        grade: formData.grade,
-        status: 'pending',
-        createdAt: new Date().toISOString()
-      }
-
-      // Save to localStorage
-      registeredUsers.push(newUser)
-      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-
-      // Verify save was successful
-      const savedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-      console.log('User registered successfully:', newUser.email)
-      console.log('Total users:', savedUsers.length)
+        grade: formData.grade
+      })
 
       // Auto login after registration
       setTimeout(() => {
-        localStorage.setItem('token', 'demo-token-' + Date.now())
-        localStorage.setItem('user', JSON.stringify({
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-          status: newUser.status
-        }))
-        navigate('/dashboard')
+        navigate('/login')
       }, 500)
     } catch (err) {
       console.error('Registration error:', err)
-      setError('การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      setError(err.message || 'การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       setLoading(false)
     }
   }
