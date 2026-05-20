@@ -77,7 +77,7 @@ const Contact = () => {
               <h3 className="font-bold text-gray-800 mb-4">ติดตามเราบนโซเชียลมีเดีย</h3>
               <div className="flex gap-4">
                 <a
-                  href="https://facebook.com/opengown27"
+                  href="https://facebook.com/OpengownCamp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 p-3 rounded-lg text-white hover:bg-blue-700 transition-colors"
@@ -85,7 +85,7 @@ const Contact = () => {
                   <Facebook size={24} />
                 </a>
                 <a
-                  href="https://instagram.com/opengown27"
+                  href="https://instagram.com/opengowncamp/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-pink-600 p-3 rounded-lg text-white hover:bg-pink-700 transition-colors"
