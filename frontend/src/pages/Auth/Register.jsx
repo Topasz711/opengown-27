@@ -67,6 +67,11 @@ const Register = () => {
       registeredUsers.push(newUser)
       localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
 
+      // Verify save was successful
+      const savedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
+      console.log('User registered successfully:', newUser.email)
+      console.log('Total users:', savedUsers.length)
+
       // Auto login after registration
       setTimeout(() => {
         localStorage.setItem('token', 'demo-token-' + Date.now())
@@ -79,6 +84,7 @@ const Register = () => {
         navigate('/dashboard')
       }, 500)
     } catch (err) {
+      console.error('Registration error:', err)
       setError('การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       setLoading(false)
     }

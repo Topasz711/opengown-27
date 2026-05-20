@@ -21,6 +21,10 @@ const Login = () => {
       // Get registered users from localStorage
       const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
       
+      console.log('Attempting login with:', formData.email)
+      console.log('Registered users count:', registeredUsers.length)
+      console.log('Registered users:', registeredUsers.map(u => ({ email: u.email, name: u.name })))
+      
       // Find user with matching email and password
       const user = registeredUsers.find(
         u => u.email === formData.email && u.password === formData.password
@@ -30,10 +34,13 @@ const Login = () => {
       await new Promise(resolve => setTimeout(resolve, 500))
 
       if (!user) {
+        console.error('Login failed: User not found or password incorrect')
         setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
         setLoading(false)
         return
       }
+
+      console.log('Login successful for user:', user.email)
 
       // Login successful
       localStorage.setItem('token', 'demo-token-' + Date.now())
@@ -133,16 +140,19 @@ const Login = () => {
           <div className="mt-6">
             <button 
               onClick={() => {
+                console.log('Google login initiated')
                 // Simulated Google Login
                 setTimeout(() => {
-                  localStorage.setItem('token', 'google-token-' + Date.now())
-                  localStorage.setItem('user', JSON.stringify({
+                  const googleUser = {
                     id: Date.now(),
                     name: 'Google User',
                     email: 'googleuser@gmail.com',
                     status: 'active',
                     provider: 'google'
-                  }))
+                  }
+                  console.log('Google login successful:', googleUser)
+                  localStorage.setItem('token', 'google-token-' + Date.now())
+                  localStorage.setItem('user', JSON.stringify(googleUser))
                   navigate('/dashboard')
                 }, 500)
               }}
