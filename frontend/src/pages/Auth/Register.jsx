@@ -36,20 +36,50 @@ const Register = () => {
     setLoading(true)
 
     try {
-      // Simulated registration
+      // Get existing users from localStorage
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
+      
+      // Check if email already exists
+      const emailExists = registeredUsers.some(u => u.email === formData.email)
+      
+      if (emailExists) {
+        setError('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่น')
+        setLoading(false)
+        return
+      }
+
+      // Create new user
+      const newUser = {
+        id: Date.now(),
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        school: formData.school,
+        grade: formData.grade,
+        status: 'pending',
+        createdAt: new Date().toISOString()
+      }
+
+      // Save to localStorage
+      registeredUsers.push(newUser)
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
+
+      // Auto login after registration
       setTimeout(() => {
-        localStorage.setItem('token', 'demo-token')
+        localStorage.setItem('token', 'demo-token-' + Date.now())
         localStorage.setItem('user', JSON.stringify({
-          id: 1,
-          name: `${formData.firstName} ${formData.lastName}`,
-          email: formData.email,
-          status: 'pending'
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          status: newUser.status
         }))
         navigate('/dashboard')
       }, 500)
     } catch (err) {
-      setError(err.response?.data?.message || 'การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
-    } finally {
+      setError('การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
       setLoading(false)
     }
   }
