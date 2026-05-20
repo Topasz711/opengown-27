@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stethoscope, Heart, Hospital, Users, Theatre } from 'lucide-react'
+import { Stethoscope, Heart, Hospital, Users, Drama } from 'lucide-react'
 
 const Activities = () => {
   const activities = [
@@ -39,7 +39,7 @@ const Activities = () => {
       id: 5,
       title: 'Recreation & Games',
       description: 'กิจกรรมสันทนาการสานสัมพันธ์ เล่นเกมสนุกๆ กับเพื่อนใหม่มากมาย',
-      icon: Theatre,
+      icon: Drama,
       color: 'bg-orange-500',
       image: '/images/recreation.jpg'
     },
@@ -47,7 +47,7 @@ const Activities = () => {
       id: 6,
       title: 'ละครค่าย',
       description: 'แสดงละครสร้างสรรค์ที่ถ่ายทอดเรื่องราวเกี่ยวกับวิชาชีพแพทย์และแรงบันดาลใจ',
-      icon: Theatre,
+      icon: Drama,
       color: 'bg-pink-500',
       image: '/images/drama.jpg'
     }
