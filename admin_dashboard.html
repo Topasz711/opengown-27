@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenGown Admin Dashboard - จำลอง</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-view {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .btn-view:hover {
+            background-color: #5568d3;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .image-preview {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎓 OpenGown Admin Dashboard</h1>
+        <p>ระบบจัดการข้อมูลผู้สมัคร (จำลอง)</p>
+    </div>
+    
+    <div class="container">
+        <div class="alert alert-info">
+            <strong>ℹ️ หมายเหตุ:</strong> นี่เป็นหน้า Dashboard จำลองที่แสดงข้อมูลตัวอย่าง เพื่อให้คุณเห็นภาพว่าเมื่อมีระบบ Backend จริง ข้อมูลจะแสดงผลแบบนี้
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalUsers">0</div>
+                <div class="stat-label">ผู้ใช้ทั้งหมด</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalApplications">0</div>
+                <div class="stat-label">ใบสมัครทั้งหมด</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingApplications">0</div>
+                <div class="stat-label">รอตรวจสอบ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="approvedApplications">0</div>
+                <div class="stat-label">อนุมัติแล้ว</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>👥 รายชื่อผู้ใช้ทั้งหมด</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>อีเมล</th>
+                        <th>เบอร์โทร</th>
+                        <th>วันที่สมัคร</th>
+                        <th>จำนวนใบสมัคร</th>
+                        <th>การจัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTable">
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>📋 ใบสมัครทั้งหมด</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ผู้สมัคร</th>
+                        <th>คณะ/สาขา</th>
+                        <th>รุ่นที่</th>
+                        <th>สถานะ</th>
+                        <th>วันที่ยื่น</th>
+                        <th>ดูรายละเอียด</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับดูรายละเอียด -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">รายละเอียด</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // ข้อมูลจำลอง (Mock Data)
+        const mockData = {
+            users: [
+                {
+                    id: 1,
+                    firstName: "สมชาย",
+                    lastName: "ใจดี",
+                    email: "somchai@example.com",
+                    phone: "081-234-5678",
+                    registeredAt: "2024-01-15 10:30:00",
+                    applicationsCount: 2
+                },
+                {
+                    id: 2,
+                    firstName: "วิไล",
+                    lastName: "รักเรียน",
+                    email: "wilai@example.com",
+                    phone: "082-345-6789",
+                    registeredAt: "2024-01-16 14:20:00",
+                    applicationsCount: 1
+                },
+                {
+                    id: 3,
+                    firstName: "ประภา",
+                    lastName: "มุ่งมั่น",
+                    email: "prapha@example.com",
+                    phone: "083-456-7890",
+                    registeredAt: "2024-01-17 09:15:00",
+                    applicationsCount: 0
+                }
+            ],
+            applications: [
+                {
+                    id: 101,
+                    userId: 1,
+                    userName: "สมชาย ใจดี",
+                    faculty: "วิศวกรรมศาสตร์",
+                    department: "คอมพิวเตอร์",
+                    generation: "67",
+                    status: "approved",
+                    submittedAt: "2024-01-15 11:00:00",
+                    photoPath: "uploads/user_1_photo.png",
+                    transcriptPath: "uploads/user_1_transcript.pdf",
+                    consentFormPath: "uploads/user_1_consent.pdf",
+                    address: "123 ถ.สุขุมวิท กรุงเทพฯ",
+                    emergencyContact: "081-234-5678 (มารดา)",
+                    reason: "ต้องการพัฒนาทักษะและสร้างเครือข่ายกับเพื่อนๆ ในวงการ"
+                },
+                {
+                    id: 102,
+                    userId: 1,
+                    userName: "สมชาย ใจดี",
+                    faculty: "วิทยาศาสตร์",
+                    department: "คณิตศาสตร์",
+                    generation: "66",
+                    status: "pending",
+                    submittedAt: "2024-01-15 12:30:00",
+                    photoPath: "uploads/user_1_photo2.png",
+                    transcriptPath: "uploads/user_1_transcript2.pdf",
+                    consentFormPath: "uploads/user_1_consent2.pdf",
+                    address: "123 ถ.สุขุมวิท กรุงเทพฯ",
+                    emergencyContact: "081-234-5678 (มารดา)",
+                    reason: "สนใจเรียนรู้เพิ่มเติมในสาขาคณิตศาสตร์ประยุกต์"
+                },
+                {
+                    id: 103,
+                    userId: 2,
+                    userName: "วิไล รักเรียน",
+                    faculty: "มนุษยศาสตร์",
+                    department: "ภาษาอังกฤษ",
+                    generation: "67",
+                    status: "rejected",
+                    submittedAt: "2024-01-16 15:00:00",
+                    photoPath: "uploads/user_2_photo.png",
+                    transcriptPath: "uploads/user_2_transcript.pdf",
+                    consentFormPath: "uploads/user_2_consent.pdf",
+                    address: "456 ถ.พหลโยธิน กรุงเทพฯ",
+                    emergencyContact: "082-345-6789 (บิดา)",
+                    reason: "ต้องการปรับปรุงทักษะการสื่อสารภาษาอังกฤษ"
+                }
+            ]
+        };
+
+        // ฟังก์ชันแปลงสถานะเป็นภาษาไทย
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'รอตรวจสอบ',
+                'approved': 'อนุมัติแล้ว',
+                'rejected': 'ไม่อนุมัติ'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getStatusClass(status) {
+            const classMap = {
+                'pending': 'status-pending',
+                'approved': 'status-approved',
+                'rejected': 'status-rejected'
+            };
+            return classMap[status] || '';
+        }
+
+        // แสดงสถิติ
+        function renderStats() {
+            document.getElementById('totalUsers').textContent = mockData.users.length;
+            document.getElementById('totalApplications').textContent = mockData.applications.length;
+            document.getElementById('pendingApplications').textContent = 
+                mockData.applications.filter(app => app.status === 'pending').length;
+            document.getElementById('approvedApplications').textContent = 
+                mockData.applications.filter(app => app.status === 'approved').length;
+        }
+
+        // แสดงตารางผู้ใช้
+        function renderUsersTable() {
+            const tbody = document.getElementById('usersTable');
+            tbody.innerHTML = '';
+            
+            mockData.users.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.firstName} ${user.lastName}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td>${user.registeredAt}</td>
+                    <td>${user.applicationsCount}</td>
+                    <td>
+                        <button class="btn btn-view" onclick="viewUserDetails(${user.id})">ดูรายละเอียด</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // แสดงตารางใบสมัคร
+        function renderApplicationsTable() {
+            const tbody = document.getElementById('applicationsTable');
+            tbody.innerHTML = '';
+            
+            mockData.applications.forEach(app => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${app.id}</td>
+                    <td>${app.userName}</td>
+                    <td>${app.faculty} - ${app.department}</td>
+                    <td>รุ่น ${app.generation}</td>
+                    <td><span class="status-badge ${getStatusClass(app.status)}">${getStatusText(app.status)}</span></td>
+                    <td>${app.submittedAt}</td>
+                    <td>
+                        <button class="btn btn-view" onclick="viewApplicationDetails(${app.id})">ดูรายละเอียด</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // ดูรายละเอียดผู้ใช้
+        function viewUserDetails(userId) {
+            const user = mockData.users.find(u => u.id === userId);
+            const userApplications = mockData.applications.filter(app => app.userId === userId);
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">ID ผู้ใช้</div>
+                        <div class="detail-value">${user.id}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">ชื่อ-นามสกุล</div>
+                        <div class="detail-value">${user.firstName} ${user.lastName}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">อีเมล</div>
+                        <div class="detail-value">${user.email}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">เบอร์โทร</div>
+                        <div class="detail-value">${user.phone}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">วันที่สมัคร</div>
+                        <div class="detail-value">${user.registeredAt}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">จำนวนใบสมัคร</div>
+                        <div class="detail-value">${user.applicationsCount}</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 1.5rem 0 1rem 0; color: #667eea;">ใบสมัครของผู้ใช้นี้</h3>
+                ${userApplications.length > 0 ? `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>คณะ/สาขา</th>
+                                <th>รุ่น</th>
+                                <th>สถานะ</th>
+                                <th>วันที่ยื่น</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${userApplications.map(app => `
+                                <tr>
+                                    <td>${app.id}</td>
+                                    <td>${app.faculty} - ${app.department}</td>
+                                    <td>${app.generation}</td>
+                                    <td><span class="status-badge ${getStatusClass(app.status)}">${getStatusText(app.status)}</span></td>
+                                    <td>${app.submittedAt}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                ` : '<p style="text-align: center; color: #666; padding: 2rem;">ยังไม่มีใบสมัคร</p>'}
+            `;
+            
+            document.getElementById('modalTitle').textContent = `รายละเอียดผู้ใช้: ${user.firstName} ${user.lastName}`;
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        // ดูรายละเอียดใบสมัคร
+        function viewApplicationDetails(appId) {
+            const app = mockData.applications.find(a => a.id === appId);
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">ID ใบสมัคร</div>
+                        <div class="detail-value">${app.id}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">ผู้สมัคร</div>
+                        <div class="detail-value">${app.userName}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">คณะ</div>
+                        <div class="detail-value">${app.faculty}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">สาขา</div>
+                        <div class="detail-value">${app.department}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">รุ่นที่</div>
+                        <div class="detail-value">${app.generation}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">สถานะ</div>
+                        <div class="detail-value"><span class="status-badge ${getStatusClass(app.status)}">${getStatusText(app.status)}</span></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">วันที่ยื่น</div>
+                        <div class="detail-value">${app.submittedAt}</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 1.5rem 0 1rem 0; color: #667eea;">ข้อมูลเพิ่มเติม</h3>
+                <div class="detail-item" style="margin-bottom: 1rem;">
+                    <div class="detail-label">ที่อยู่</div>
+                    <div class="detail-value">${app.address}</div>
+                </div>
+                <div class="detail-item" style="margin-bottom: 1rem;">
+                    <div class="detail-label">ผู้ติดต่อฉุกเฉิน</div>
+                    <div class="detail-value">${app.emergencyContact}</div>
+                </div>
+                <div class="detail-item" style="margin-bottom: 1rem;">
+                    <div class="detail-label">เหตุผลที่สมัคร</div>
+                    <div class="detail-value">${app.reason}</div>
+                </div>
+                
+                <h3 style="margin: 1.5rem 0 1rem 0; color: #667eea;">ไฟล์ที่อัปโหลด</h3>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">รูปถ่าย</div>
+                        <div class="detail-value">${app.photoPath}</div>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x200?text=รูปถ่าย+${app.userName}" alt="รูปถ่าย">
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">ทรานสคริปต์</div>
+                        <div class="detail-value">${app.transcriptPath}</div>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x200?text=ทรานสคริปต์" alt="ทรานสคริปต์">
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">แบบฟอร์มยินยอม</div>
+                        <div class="detail-value">${app.consentFormPath}</div>
+                        <div class="image-preview">
+                            <img src="https://via.placeholder.com/300x200?text=แบบฟอร์ม+ยินยอม" alt="แบบฟอร์มยินยอม">
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('modalTitle').textContent = `รายละเอียดใบสมัคร #${app.id}`;
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        // ปิด Modal
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // ปิด Modal เมื่อคลิกข้างนอก
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // เริ่มต้นทำงาน
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStats();
+            renderUsersTable();
+            renderApplicationsTable();
+        });
+    </script>
+</body>
+</html>
