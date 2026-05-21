@@ -1,1 +1,10 @@
-Nothing should be ignored based on the provided file changes. The only added file is `check_db.py`, which is a Python source file and should not be ignored.
+```
+# Logs and temp files
+*.log
+
+# Database files
+*.db
+
+# Uploads directory
+backend/uploads/
+```

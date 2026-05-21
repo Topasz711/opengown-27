@@ -344,6 +344,7 @@ async def get_my_application(current_user: dict = Depends(get_current_user)):
 @app.get("/api/admin/users", response_model=List[dict])
 async def get_all_users(current_admin: dict = Depends(get_current_admin_user)):
     db = await aiosqlite.connect(DATABASE_URL)
+    db.row_factory = aiosqlite.Row
     
     async with db.execute("SELECT id, email, first_name, last_name, name, phone, school, grade, status, created_at, is_admin FROM users ORDER BY created_at DESC") as cursor:
         rows = await cursor.fetchall()
@@ -355,6 +356,7 @@ async def get_all_users(current_admin: dict = Depends(get_current_admin_user)):
 @app.get("/api/admin/applications", response_model=List[dict])
 async def get_all_applications(current_admin: dict = Depends(get_current_admin_user)):
     db = await aiosqlite.connect(DATABASE_URL)
+    db.row_factory = aiosqlite.Row
     
     async with db.execute('''
         SELECT a.*, u.email, u.name as user_name, u.phone, u.school, u.grade
@@ -371,6 +373,7 @@ async def get_all_applications(current_admin: dict = Depends(get_current_admin_u
 @app.get("/api/admin/users/{user_id}")
 async def get_user_detail(user_id: int, current_admin: dict = Depends(get_current_admin_user)):
     db = await aiosqlite.connect(DATABASE_URL)
+    db.row_factory = aiosqlite.Row
     
     async with db.execute("SELECT id, email, first_name, last_name, name, phone, school, grade, status, created_at, is_admin FROM users WHERE id = ?", (user_id,)) as cursor:
         user_row = await cursor.fetchone()
