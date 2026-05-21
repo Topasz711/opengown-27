@@ -1,10 +1,1 @@
-```
-# Logs and temp files
-*.log
-
-# Database files
-*.db
-
-# Uploads directory
-backend/uploads/
-```
+Nothing needs to be added to .gitignore since the changes only include source files (.md, .sh) without any build artifacts, dependencies, or temporary files that should be ignored.
