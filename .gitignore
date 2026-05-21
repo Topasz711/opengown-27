@@ -1,1 +1,1 @@
-Nothing needs to be added to .gitignore since the changes only include source files (.md, .sh) without any build artifacts, dependencies, or temporary files that should be ignored.
+Nothing needs to be added to .gitignore since only a single HTML file (admin_dashboard.html) was added, which is a source file that should be tracked in version control. No build artifacts, dependencies, or temporary files were included in the changes.
