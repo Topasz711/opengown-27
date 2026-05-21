@@ -23,9 +23,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">OG27</span>
-            </div>
+            <img src="/opgprofile.jpg" alt="Opengown Camp 27" className="w-10 h-10 rounded-full object-cover shadow-md" />
             <span className="text-xl font-bold text-gray-800 hidden sm:block">
               Opengown Camp 27th
             </span>

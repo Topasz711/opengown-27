@@ -18,9 +18,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="mb-6 inline-block">
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                <span className="text-4xl md:text-5xl font-bold text-primary">OG27</span>
-              </div>
+              <img src="/opgprofile.jpg" alt="Opengown Camp 27" className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto shadow-2xl object-cover" />
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
