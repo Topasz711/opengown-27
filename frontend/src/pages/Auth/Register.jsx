@@ -15,7 +15,6 @@ const Register = () => {
     confirmPassword: '',
     phone: '',
     school: '',
-    grade: '',
     agreeTerms: false
   })
   const [error, setError] = useState('')
@@ -50,7 +49,6 @@ const Register = () => {
             last_name: formData.lastName,
             phone: formData.phone,
             school: formData.school,
-            grade: parseFloat(formData.grade),
             role: 'student',
             created_at: new Date().toISOString()
           }
@@ -168,23 +166,6 @@ const Register = () => {
                 onChange={(e) => setFormData({ ...formData, school: e.target.value })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="ชื่อโรงเรียน"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                เกรดเฉลี่ยสะสม (GPAX) *
-              </label>
-              <input
-                type="number"
-                step="0.01"
-                min="0"
-                max="4"
-                value={formData.grade}
-                onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="3.xx"
                 required
               />
             </div>

@@ -106,6 +106,7 @@ const Contact = () => {
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
+                  title="โรงพยาบาลวชิรพยาบาล"
                 ></iframe>
               </div>
             </div>
