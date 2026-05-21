@@ -1,1 +1,20 @@
-Nothing needs to be added to .gitignore since only a single HTML file (admin_dashboard.html) was added, which is a source file that should be tracked in version control. No build artifacts, dependencies, or temporary files were included in the changes.
+```
+# Dependencies
+node_modules/
+
+# Build outputs
+frontend/dist/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Database
+backend/opengown.db
+
+# IDE
+.vscode/
+
+```
