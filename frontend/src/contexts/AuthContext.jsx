@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
+import { authAPI } from '../services/api'
 
 const AuthContext = createContext(null)
 
@@ -15,67 +16,61 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user is logged in via localStorage
-    const storedUser = localStorage.getItem('user')
+    // Check if user is logged in via token
     const token = localStorage.getItem('token')
     
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser))
+    if (token) {
+      // Fetch user data from API
+      authAPI.me()
+        .then(response => {
+          setUser(response.data)
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error)
+          localStorage.removeItem('token')
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    } else {
+      setLoading(false)
     }
-    setLoading(false)
   }, [])
 
   const login = async (email, password) => {
-    // Get registered users from localStorage
-    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-    
-    // Find user with matching email and password
-    const foundUser = registeredUsers.find(
-      u => u.email === email && u.password === password
-    )
-
-    if (!foundUser) {
-      throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+    try {
+      const formData = new FormData()
+      formData.append('username', email)
+      formData.append('password', password)
+      
+      const response = await authAPI.login(formData)
+      const { access_token } = response.data
+      
+      localStorage.setItem('token', access_token)
+      
+      // Fetch user data
+      const userResponse = await authAPI.me()
+      setUser(userResponse.data)
+      
+      return userResponse.data
+    } catch (error) {
+      console.error('Login error:', error)
+      throw new Error(error.response?.data?.detail || 'การเข้าสู่ระบบไม่สำเร็จ')
     }
-
-    // Set user data to localStorage
-    const userData = {
-      id: foundUser.id,
-      name: foundUser.name,
-      email: foundUser.email,
-      status: foundUser.status || 'pending'
-    }
-    
-    localStorage.setItem('token', 'demo-token-' + Date.now())
-    localStorage.setItem('user', JSON.stringify(userData))
-    setUser(userData)
-    return userData
   }
 
   const register = async (userData) => {
-    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-    
-    // Check if email already exists
-    const emailExists = registeredUsers.some(u => u.email === userData.email)
-    if (emailExists) {
-      throw new Error('อีเมลนี้ถูกใช้งานแล้ว')
+    try {
+      const response = await authAPI.register(userData)
+      return response.data
+    } catch (error) {
+      console.error('Registration error:', error)
+      throw new Error(error.response?.data?.detail || 'การสมัครไม่สำเร็จ')
     }
-
-    const newUser = {
-      id: Date.now(),
-      ...userData,
-      status: 'pending',
-      createdAt: new Date().toISOString()
-    }
-
-    registeredUsers.push(newUser)
-    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-    return newUser
   }
 
   const logout = () => {
     localStorage.removeItem('token')
-    localStorage.removeItem('user')
     setUser(null)
   }
 
