@@ -58,7 +58,7 @@ const Schedule = () => {
   ]
 
   return (
-    <div className="py-12 bg-gradient-to-b from-blue-50 to-white min-h-screen">
+    <div className="py-12 bg-gradient-to-b from-blue-50 to-white min-h-screen pt-24">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
