@@ -54,7 +54,7 @@ const Activities = () => {
   ]
 
   return (
-    <div className="py-12 bg-gradient-to-b from-white to-blue-50">
+    <div className="py-12 bg-gradient-to-b from-white to-blue-50 pt-24">
       <h2 className="section-title">กิจกรรมภายในค่าย</h2>
       <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
         ค่าย Opengown Camp 27th มีกิจกรรมหลากหลายที่จะทำให้น้องๆ ได้สัมผัสประสบการณ์จริง
