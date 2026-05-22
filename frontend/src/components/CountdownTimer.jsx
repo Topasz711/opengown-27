@@ -36,7 +36,7 @@ const CountdownTimer = ({ targetDate }) => {
       </h3>
       <div className="flex justify-center gap-4 flex-wrap">
         {timeUnits.map((unit, index) => (
-          <div key={index} className={`${unit.color} rounded-lg p-4 min-w-[100px]`}>
+          <div key={index} className={`${unit.color} rounded-lg p-4 min-w-[100px] text-center`}>
             <div className="text-3xl md:text-4xl font-bold text-white">
               {String(unit.value).padStart(2, '0')}
             </div>
