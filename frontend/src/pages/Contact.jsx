@@ -100,7 +100,7 @@ const Contact = () => {
               <h3 className="font-bold text-gray-800 mb-4">แผนที่</h3>
               <div className="rounded-lg overflow-hidden shadow-lg relative">
                 <a
-                  href="https://maps.app.goo.gl/1w9R8vW2WbYn8M8M7"
+                  href="https://www.google.com/maps/place/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5/@13.7799168,100.5067143,16.5z/data=!4m6!3m5!1s0x30e2995ff3547271:0x29fa4e9a551a8175!8m2!3d13.7805712!4d100.5091916!16s%2Fg%2F11hdylnpzs?hl=th"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute top-4 left-4 z-10 bg-white px-4 py-2 rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
@@ -108,14 +108,14 @@ const Contact = () => {
                   เปิดใน Maps ↗
                 </a>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.053229986348!2d100.5015849!3d13.7756596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2996144414eb1%3A0x67399cf3500366bc!2z4LiE4LiZ4Liw4LmB4Lie4LiX4Lii4Liy4LiZ4Liq4LiV4Lij4LmH4Lin4LiK4Li04Lij4Lie4Liy4Lii4Liy4Lil!5e0!3m2!1sth!2sth!4v1716460000000!5m2!1sth!2sth"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.006903828945!2d100.50661669999999!3d13.7805712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2995ff3547271%3A0x29fa4e9a551a8175!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lin4LiK4Liy4Lie4Liy4Lia4Liy4Lil!5e0!3m2!1sth!2sth!4v1716462000000!5m2!1sth!2sth"
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="คณะแพทยศาสตร์วชิรพยาบาล"
+                  title="โรงพยาบาลวชิรพยาบาล"
                   className="w-full h-full rounded-xl"
                 ></iframe>
               </div>
