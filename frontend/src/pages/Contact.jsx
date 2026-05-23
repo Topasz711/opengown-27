@@ -98,15 +98,25 @@ const Contact = () => {
             {/* Google Maps */}
             <div className="mt-8">
               <h3 className="font-bold text-gray-800 mb-4">แผนที่</h3>
-              <div className="rounded-lg overflow-hidden shadow-lg">
+              <div className="rounded-lg overflow-hidden shadow-lg relative">
+                <a
+                  href="https://maps.app.goo.gl/1w9R8vW2WbYn8M8M7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 left-4 z-10 bg-white px-4 py-2 rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                >
+                  เปิดใน Maps ↗
+                </a>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.96!2d100.5089!3d13.7756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed8b0c47e69%3A0x123456789abcdef!2sVajira%20Hospital!5e0!3m2!1sen!2sth!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.053229986348!2d100.5015849!3d13.7756596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2996144414eb1%3A0x67399cf3500366bc!2z4LiE4LiZ4Liw4LmB4Lie4LiX4Lii4Liy4LiZ4Liq4LiV4Lij4LmH4Lin4LiK4Li04Lij4Lie4Liy4Lii4Liy4Lil!5e0!3m2!1sth!2sth!4v1716460000000!5m2!1sth!2sth"
                   width="100%"
-                  height="300"
+                  height="450"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
-                  title="โรงพยาบาลวชิรพยาบาล"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="คณะแพทยศาสตร์วชิรพยาบาล"
+                  className="w-full h-full rounded-xl"
                 ></iframe>
               </div>
             </div>
