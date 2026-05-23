@@ -36,7 +36,7 @@ const Home = () => {
             </p>
             
             {/* Countdown Timer with Glassmorphism */}
-            <div className="py-2 max-w-md mx-auto lg:mx-0">
+            <div className="py-2 max-w-xl mx-auto lg:mx-0">
               <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-blue-100 shadow-sm">
                 <p className="text-xs font-medium text-slate-400 mb-2 text-center lg:text-left">⏰ ระยะเวลาที่เหลือสำหรับเปิดรับสมัคร</p>
                 <CountdownTimer targetDate={applicationDeadline} />
@@ -44,7 +44,7 @@ const Home = () => {
             </div>
 
             {/* Action Buttons - Pastel Orange/Amber */}
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2 max-w-xl mx-auto lg:mx-0">
               <Link
                 to="/register"
                 className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 transform hover:-translate-y-0.5 transition-all shadow-md shadow-orange-500/20"
