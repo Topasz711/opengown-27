@@ -34,13 +34,13 @@ const CountdownTimer = ({ targetDate }) => {
       <h3 className="text-xl font-semibold text-gray-700 mb-6">
         นับถอยหลังสู่วันปิดรับสมัคร
       </h3>
-      <div className="flex justify-center gap-4 flex-wrap">
+      <div className="grid grid-cols-4 gap-2 w-full max-w-md mx-auto">
         {timeUnits.map((unit, index) => (
-          <div key={index} className={`${unit.color} rounded-lg p-4 min-w-[100px] text-center`}>
-            <div className="text-3xl md:text-4xl font-bold text-white">
+          <div key={index} className={`${unit.color} rounded-xl p-3 min-w-0 flex flex-col items-center justify-center`}>
+            <div className="text-2xl md:text-3xl font-bold text-white">
               {String(unit.value).padStart(2, '0')}
             </div>
-            <div className="text-white text-sm mt-1">{unit.label}</div>
+            <div className="text-white text-xs mt-1">{unit.label}</div>
           </div>
         ))}
       </div>
