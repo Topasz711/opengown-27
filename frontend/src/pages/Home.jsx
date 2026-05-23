@@ -97,7 +97,7 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: Users, value: '100+', label: 'ผู้เข้าร่วมต่อรุ่น', color: 'bg-blue-100 text-blue-600' },
-              { icon: Calendar, value: '3', label: 'วัน 2 คืน', color: 'bg-teal-100 text-teal-600' },
+              { icon: Calendar, value: '3', label: 'วัน', color: 'bg-teal-100 text-teal-600' },
               { icon: Award, value: '10+', label: 'เวิร์กช็อป', color: 'bg-indigo-100 text-indigo-600' },
               { icon: Heart, value: '27', label: 'ครั้งที่', color: 'bg-rose-100 text-rose-600' }
             ].map((stat, index) => {
