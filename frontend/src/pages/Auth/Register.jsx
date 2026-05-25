@@ -37,27 +37,47 @@ const Register = () => {
     setLoading(true)
 
     try {
-      // 1. สร้างผู้ใช้ในตาราง users ผ่าน Supabase
-      const { data: user, error: userError } = await supabase
-        .from('users')
-        .insert([
-          {
-            email: formData.email,
-            password_hash: formData.password, // ใน production ควรทำ hash ก่อน
-            full_name: `${formData.firstName} ${formData.lastName}`,
+      // 1. สร้างผู้ใช้ใน Supabase Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
             first_name: formData.firstName,
             last_name: formData.lastName,
             phone: formData.phone,
-            school: formData.school,
-            role: 'student',
-            created_at: new Date().toISOString()
+            school: formData.school
           }
-        ])
-        .select()
-        .single()
+        }
+      })
 
-      if (userError) {
-        throw new Error(userError.message || 'การสมัครไม่สำเร็จ')
+      if (authError) {
+        throw new Error(authError.message || 'การสมัครไม่สำเร็จ')
+      }
+
+      // 2. เพิ่มข้อมูลลงในตาราง public.users (ถ้าต้องการ)
+      if (authData.user) {
+        const { error: insertError } = await supabase
+          .from('users')
+          .insert([
+            {
+              id: authData.user.id,
+              email: formData.email,
+              first_name: formData.firstName,
+              last_name: formData.lastName,
+              name: `${formData.firstName} ${formData.lastName}`,
+              phone: formData.phone,
+              school: formData.school,
+              grade: 0,
+              role: 'student',
+              status: 'pending'
+            }
+          ])
+
+        if (insertError) {
+          console.error('Insert error:', insertError)
+          // ไม่ throw error เพราะ user ถูกสร้างใน auth แล้ว
+        }
       }
 
       alert('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ')
