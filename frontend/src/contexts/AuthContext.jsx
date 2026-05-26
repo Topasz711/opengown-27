@@ -39,11 +39,16 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const formData = new FormData()
-      formData.append('username', email)
-      formData.append('password', password)
+      // Create URLSearchParams for OAuth2 password grant format
+      const params = new URLSearchParams()
+      params.append('username', email)
+      params.append('password', password)
       
-      const response = await authAPI.login(formData)
+      const response = await api.post('/auth/login', params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
       const { access_token } = response.data
       
       localStorage.setItem('token', access_token)
