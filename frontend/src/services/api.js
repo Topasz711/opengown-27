@@ -3,7 +3,7 @@ import axios from 'axios'
 // ใช้ API_BASE_URL แบบเต็ม URL เพื่อหลีกเลี่ยงปัญหา 405 บน Vercel
 // ใน development ใช้ localhost, ใน production ให้เปลี่ยนเป็น URL ของ Backend ที่ deploy แยกไว้
 const API_BASE_URL = import.meta.env.VITE_API_URL || 
-  (window.location.hostname === 'localhost' 
+  (['localhost', '127.0.0.1'].includes(window.location.hostname)
     ? 'http://localhost:8000/api' 
     : 'https://your-backend-api.com/api') // <-- เปลี่ยนเป็น URL Backend จริงของคุณเมื่อ deploy
 
