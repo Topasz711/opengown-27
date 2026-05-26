@@ -1,1 +1,44 @@
-Nothing needs to be added to .gitignore since only a source file (frontend/src/services/api.js) was modified and there are no build artifacts, dependencies, or temporary files in the changes.
+```
+# Dependencies
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+.env.local
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Testing and coverage
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+```
