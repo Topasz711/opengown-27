@@ -2,24 +2,9 @@
 # Dependencies
 node_modules/
 
-# Build artifacts
-frontend/node_modules/.vite/
+# Database
+*.db
 
-# Environment variables
-.env*
-
-# IDE files
-.vscode/
-.idea/
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.swp
-
-# OS generated files
-.DS_Store
-Thumbs.db
+# Package management
+package-lock.json
 ```
