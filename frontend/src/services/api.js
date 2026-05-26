@@ -25,7 +25,18 @@ api.interceptors.request.use(
 
 // Auth APIs
 export const authAPI = {
-  login: (email, password) => api.post('/auth/login', { email, password }),
+  login: (email, password) => {
+    // สร้าง Form Data ตามที่ OAuth2PasswordRequestForm ของ FastAPI ต้องการ
+    const params = new URLSearchParams()
+    params.append('username', email) // Backend ใช้คำว่า username รับแทน email
+    params.append('password', password)
+    
+    return api.post('/auth/login', params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+  },
   register: (data) => api.post('/auth/register', data),
   me: () => api.get('/auth/me'),
   logout: () => api.post('/auth/logout'),

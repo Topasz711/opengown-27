@@ -39,21 +39,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      // Create URLSearchParams for OAuth2 password grant format
-      const params = new URLSearchParams()
-      params.append('username', email)
-      params.append('password', password)
-      
-      const response = await api.post('/auth/login', params, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
+      // เรียกใช้ authAPI ตัวที่เรา import มาข้างบนให้ถูกต้อง
+      const response = await authAPI.login(email, password)
       const { access_token } = response.data
       
       localStorage.setItem('token', access_token)
       
-      // Fetch user data
+      // Fetch user data ดึงข้อมูลผู้ใช้งานปัจจุบันกลับมาเก็บใน state
       const userResponse = await authAPI.me()
       setUser(userResponse.data)
       
