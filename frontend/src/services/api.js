@@ -1,6 +1,11 @@
 import axios from 'axios'
 
-const API_BASE_URL = '/api'
+// ใช้ API_BASE_URL แบบเต็ม URL เพื่อหลีกเลี่ยงปัญหา 405 บน Vercel
+// ใน development ใช้ localhost, ใน production ให้เปลี่ยนเป็น URL ของ Backend ที่ deploy แยกไว้
+const API_BASE_URL = import.meta.env.VITE_API_URL || 
+  (window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000/api' 
+    : 'https://your-backend-api.com/api') // <-- เปลี่ยนเป็น URL Backend จริงของคุณเมื่อ deploy
 
 const api = axios.create({
   baseURL: API_BASE_URL,
