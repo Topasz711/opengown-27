@@ -3,7 +3,7 @@ import shutil
 import uuid
 from datetime import datetime, timedelta
 from typing import Optional, List
-from fastapi import FastAPI, HTTPException, Depends, status, UploadFile, File, Form
+from fastapi import FastAPI, HTTPException, Depends, status, UploadFile, File, Form, Header
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
@@ -11,11 +11,12 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 import aiosqlite
 from pathlib import Path
+import httpx
 
 # Configuration
-SECRET_KEY = "your-secret-key-change-in-production"
+SUPABASE_URL = os.getenv("SUPABASE_URL", "https://your-project.supabase.co")
+SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET", "your-secret-key")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
 DATABASE_URL = "opengown.db"
 UPLOAD_DIR = "uploads"
 
@@ -147,25 +148,63 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-async def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
+async def get_current_user(authorization: str = Header(None), db = Depends(get_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+    
+    if not authorization or not authorization.startswith("Bearer "):
+        raise credentials_exception
+    
+    token = authorization.split(" ")[1]
+    
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        # Verify token with Supabase JWT secret
+        payload = jwt.decode(token, SUPABASE_JWT_SECRET, algorithms=[ALGORITHM])
         email: str = payload.get("sub")
         if email is None:
             raise credentials_exception
-    except JWTError:
+    except JWTError as e:
+        print(f"JWT Error: {e}")
         raise credentials_exception
     
+    # Check user exists in local database (sync with Supabase)
     async with db.execute("SELECT * FROM users WHERE email = ?", (email,)) as cursor:
         user_row = await cursor.fetchone()
     
+    # If user not in local DB but valid in Supabase, create a shadow record
+    if user_row is None:
+        # Fetch user info from Supabase
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.get(
+                    f"{SUPABASE_URL}/rest/v1/profiles?id=eq.{payload.get('user_id')}",
+                    headers={
+                        "apikey": os.getenv("SUPABASE_ANON_KEY", ""),
+                        "Authorization": f"Bearer {os.getenv('SUPABASE_ANON_KEY', '')}"
+                    }
+                )
+                if response.status_code == 200:
+                    profile_data = response.json()
+                    if profile_data:
+                        p = profile_data[0]
+                        name = p.get('full_name', email)
+                        await db.execute('''
+                            INSERT INTO users (email, password_hash, first_name, last_name, name, phone, school, grade)
+                            VALUES (?, '', ?, ?, ?, '', '', 0.0)
+                        ''', (email, p.get('first_name', ''), p.get('last_name', ''), name))
+                        await db.commit()
+                        async with db.execute("SELECT * FROM users WHERE email = ?", (email,)) as cursor2:
+                            user_row = await cursor2.fetchone()
+            except Exception as e:
+                print(f"Error fetching from Supabase: {e}")
+                raise credentials_exception
+    
     if user_row is None:
         raise credentials_exception
+        
     return dict(user_row)
 
 async def get_current_admin_user(current_user: dict = Depends(get_current_user)):
