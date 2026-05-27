@@ -37,30 +37,30 @@ const Register = () => {
     setLoading(true)
 
     try {
-      // 1. สร้างผู้ใช้ในตาราง users ผ่าน Supabase
-      const { data: user, error: userError } = await supabase
-        .from('users')
-        .insert([
-          {
-            email: formData.email,
-            password_hash: formData.password, // ใน production ควรทำ hash ก่อน
-            full_name: `${formData.firstName} ${formData.lastName}`,
+      // ใช้ Supabase Auth ในการลงทะเบียน
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
             first_name: formData.firstName,
             last_name: formData.lastName,
+            full_name: `${formData.firstName} ${formData.lastName}`,
             phone: formData.phone,
             school: formData.school,
-            role: 'student',
-            created_at: new Date().toISOString()
+            role: 'student'
           }
-        ])
-        .select()
-        .single()
+        }
+      })
 
-      if (userError) {
-        throw new Error(userError.message || 'การสมัครไม่สำเร็จ')
+      if (error) {
+        if (error.message.includes('User already registered')) {
+          throw new Error('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่นหรือเข้าสู่ระบบ')
+        }
+        throw new Error(error.message || 'การสมัครไม่สำเร็จ')
       }
 
-      alert('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ')
+      alert('สมัครสมาชิกสำเร็จ! กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชี (หากเปิดใช้งาน) หรือเข้าสู่ระบบได้เลย')
       navigate('/login')
     } catch (err) {
       console.error('Registration error:', err)
