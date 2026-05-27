@@ -40,8 +40,8 @@ const Schedule = () => {
       ]
     },
     {
-      day: 'วันอาทิตย์ที่ 9 พฤศจิกายน 2569',
-      date: '9 พฤศจิกายน 2569',
+      day: 'วันอาทิตย์ที่ 8 พฤศจิกายน 2569',
+      date: '8 พฤศจิกายน 2569',
       theme: 'วันสุดท้ายของการค่าย',
       activities: [
         { time: '07:30-08:00', name: 'ลงทะเบียน ณ ลานอเนกประสงค์ ชั้น 8 อาคารสำนักงานอธิการบดี (อาคารเกษมศรี)', location: 'อาคารเกษมศรี' },
@@ -67,7 +67,7 @@ const Schedule = () => {
           <div className="flex justify-center gap-6 text-gray-600 mb-8">
             <div className="flex items-center gap-2">
               <Calendar size={20} />
-              <span>6-9 พฤศจิกายน 2569</span>
+              <span>6-8 พฤศจิกายน 2569</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={20} />
