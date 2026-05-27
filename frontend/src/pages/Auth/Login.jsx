@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthContext'
+import { supabase } from '../../supabaseClient'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
   const navigate = useNavigate()
-  const { login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
@@ -20,11 +19,31 @@ const Login = () => {
     setLoading(true)
 
     try {
-      await login(formData.email, formData.password)
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password
+      })
+
+      if (error) {
+        if (error.message.includes('Invalid login credentials')) {
+          throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+        }
+        throw new Error(error.message || 'เข้าสู่ระบบไม่สำเร็จ')
+      }
+
+      // บันทึกข้อมูลผู้ใช้ลงใน localStorage
+      localStorage.setItem('token', data.session?.access_token)
+      localStorage.setItem('user', JSON.stringify({
+        id: data.user?.id,
+        email: data.user?.email,
+        ...data.user?.user_metadata
+      }))
+
       navigate('/dashboard')
     } catch (err) {
       console.error('Login error:', err)
       setError(err.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+    } finally {
       setLoading(false)
     }
   }
