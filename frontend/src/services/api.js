@@ -5,7 +5,7 @@ import axios from 'axios'
 const API_BASE_URL = import.meta.env.VITE_API_URL || 
   (['localhost', '127.0.0.1'].includes(window.location.hostname)
     ? 'http://localhost:8000/api' 
-    : 'https://your-backend-api.com/api') // <-- เปลี่ยนเป็น URL Backend จริงของคุณเมื่อ deploy
+    : 'https://my-shop-backend-o0iy.onrender.com/api') // <-- URL Backend จริงของคุณบน Render
 
 const api = axios.create({
   baseURL: API_BASE_URL,
