@@ -1,1 +1,51 @@
-Nothing needs to be added to .gitignore since the changes only include source code files (.jsx, .js) and no build artifacts, dependencies, or temporary files.
+```gitignore
+# Dependencies
+node_modules/
+
+# Build artifacts
+frontend/dist/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Images (not ignored as per rule)
+# *.png, *.jpg, *.jpeg, *.bmp, *.gif, *.webm are NOT ignored
+```
