@@ -1,72 +1,83 @@
-import axios from 'axios'
-
-// ใช้ API_BASE_URL แบบเต็ม URL เพื่อหลีกเลี่ยงปัญหา 405 บน Vercel
-// ใน development ใช้ localhost, ใน production ให้เปลี่ยนเป็น URL ของ Backend ที่ deploy แยกไว้
-const API_BASE_URL = import.meta.env.VITE_API_URL || 
-  (['localhost', '127.0.0.1'].includes(window.location.hostname)
-    ? 'http://localhost:8000/api' 
-    : 'https://my-shop-backend-o0iy.onrender.com/api') // <-- URL Backend จริงของคุณบน Render
-
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-
-// Request interceptor to add auth token
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+import { supabase } from '../supabaseClient'
 
 // Auth APIs
 export const authAPI = {
-  login: (email, password) => {
-    // สร้าง Form Data ตามที่ OAuth2PasswordRequestForm ของ FastAPI ต้องการ
-    const params = new URLSearchParams()
-    params.append('username', email) // Backend ใช้คำว่า username รับแทน email
-    params.append('password', password)
-    
-    return api.post('/auth/login', params, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    })
-  },
-  register: (data) => api.post('/auth/register', data),
-  me: () => api.get('/auth/me'),
-  logout: () => api.post('/auth/logout'),
+  me: async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    return user
+  }
 }
 
 // Application APIs
 export const applicationAPI = {
-  submit: (data) => api.post('/applications', data),
-  get: () => api.get('/applications/my'),
-  update: (id, data) => api.put(`/applications/${id}`, data),
-  uploadDocument: (id, formData) => 
-    api.post(`/applications/${id}/documents`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
+  submit: async (data) => {
+    const { data: result, error } = await supabase
+      .from('applications')
+      .insert([data])
+      .select()
+    if (error) throw error
+    return result
+  },
+  
+  get: async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    const { data, error } = await supabase
+      .from('applications')
+      .select('*')
+      .eq('user_id', user.id)
+    if (error) throw error
+    return data
+  },
+  
+  update: async (id, data) => {
+    const { data: result, error } = await supabase
+      .from('applications')
+      .update(data)
+      .eq('id', id)
+      .select()
+    if (error) throw error
+    return result
+  },
+
+  uploadDocument: async (id, file) => {
+    const fileExt = file.name.split('.').pop()
+    const fileName = `${id}-${Math.random()}.${fileExt}`
+    const filePath = `user_documents/${fileName}`
+
+    const { error: uploadError } = await supabase.storage
+      .from('documents')
+      .upload(filePath, file)
+      
+    if (uploadError) throw uploadError
+    
+    const { data } = supabase.storage.from('documents').getPublicUrl(filePath)
+    return data.publicUrl
+  }
 }
 
 // Schedule APIs
 export const scheduleAPI = {
-  getPublic: () => api.get('/schedule/public'),
-  getPrivate: () => api.get('/schedule/private'),
+  getPublic: async () => {
+    const { data, error } = await supabase.from('schedules').select('*').eq('is_public', true)
+    if (error) throw error
+    return data
+  },
+  getPrivate: async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) throw new Error('Unauthorized')
+    const { data, error } = await supabase.from('schedules').select('*').eq('is_public', false)
+    if (error) throw error
+    return data
+  },
 }
 
 // Contact APIs
 export const contactAPI = {
-  sendMessage: (data) => api.post('/contact', data),
+  sendMessage: async (data) => {
+    const { data: result, error } = await supabase.from('contacts').insert([data])
+    if (error) throw error
+    return result
+  },
 }
 
-export default api
+export default supabase

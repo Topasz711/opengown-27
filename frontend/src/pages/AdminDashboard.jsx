@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Users, FileText, CheckCircle, XCircle, Eye, Download, Search, Filter } from 'lucide-react'
-import api from '../services/api'
+import { Users, FileText, CheckCircle, XCircle, Eye, Download, Search, Filter, Clock } from 'lucide-react'
+import { supabase } from '../supabaseClient'
 
 const AdminDashboard = () => {
   const navigate = useNavigate()
@@ -19,14 +19,20 @@ const AdminDashboard = () => {
 
   const checkAdmin = async () => {
     try {
-      const token = localStorage.getItem('token')
-      if (!token) {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
         navigate('/login')
         return
       }
       
-      const userRes = await api.get('/auth/me')
-      if (!userRes.data.is_admin) {
+      // Check if user has admin role in metadata or users table
+      const { data: userData, error } = await supabase
+        .from('users')
+        .select('role')
+        .eq('id', user.id)
+        .single()
+      
+      if (error || userData?.role !== 'admin') {
         navigate('/dashboard')
         return
       }
@@ -40,12 +46,22 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const [usersRes, applicationsRes] = await Promise.all([
-        api.get('/admin/users'),
-        api.get('/admin/applications')
-      ])
-      setUsers(usersRes.data)
-      setApplications(applicationsRes.data)
+      // Fetch all users from the users table
+      const { data: usersData, error: usersError } = await supabase
+        .from('users')
+        .select('*')
+      
+      if (usersError) throw usersError
+      
+      // Fetch all applications
+      const { data: applicationsData, error: applicationsError } = await supabase
+        .from('applications')
+        .select('*')
+      
+      if (applicationsError) throw applicationsError
+      
+      setUsers(usersData || [])
+      setApplications(applicationsData || [])
     } catch (error) {
       console.error('Error fetching data:', error)
     } finally {
@@ -55,11 +71,13 @@ const AdminDashboard = () => {
 
   const updateStatus = async (userId, newStatus) => {
     try {
-      const formData = new FormData()
-      formData.append('status', newStatus)
-      await api.put(`/admin/users/${userId}/status`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      })
+      const { error } = await supabase
+        .from('users')
+        .update({ status: newStatus })
+        .eq('id', userId)
+      
+      if (error) throw error
+      
       fetchData()
       alert('อัพเดทสถานะสำเร็จ')
     } catch (error) {
@@ -70,15 +88,35 @@ const AdminDashboard = () => {
 
   const viewUserDetail = async (userId) => {
     try {
-      const res = await api.get(`/admin/users/${userId}`)
-      setSelectedUser(res.data)
+      // Fetch user details with their application
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', userId)
+        .single()
+      
+      if (userError) throw userError
+      
+      // Fetch user's application
+      const { data: applicationData, error: appError } = await supabase
+        .from('applications')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+      
+      if (appError && appError.code !== 'PGRST116') throw appError // PGRST116 = not found
+      
+      setSelectedUser({
+        user: userData,
+        application: applicationData || null
+      })
     } catch (error) {
       console.error('Error fetching user detail:', error)
     }
   }
 
-  const downloadFile = (filePath) => {
-    window.open(`/api/admin/files/${filePath}`, '_blank')
+  const downloadFile = (fileUrl) => {
+    window.open(fileUrl, '_blank')
   }
 
   const filteredUsers = users.filter(user => {
@@ -329,17 +367,6 @@ const AdminDashboard = () => {
                                 </button>
                               </div>
                             )}
-                            {selectedUser.application.transcript_path && (
-                              <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
-                                <span className="text-sm">ทรานสคริปต์</span>
-                                <button
-                                  onClick={() => downloadFile(selectedUser.application.transcript_path)}
-                                  className="text-primary hover:underline flex items-center gap-1"
-                                >
-                                  <Download size={16} /> ดาวน์โหลด
-                                </button>
-                              </div>
-                            )}
                             {selectedUser.application.consent_form_path && (
                               <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
                                 <span className="text-sm">ใบขออนุญาต</span>
@@ -351,7 +378,7 @@ const AdminDashboard = () => {
                                 </button>
                               </div>
                             )}
-                            {!selectedUser.application.photo_path && !selectedUser.application.transcript_path && !selectedUser.application.consent_form_path && (
+                            {!selectedUser.application.photo_path && !selectedUser.application.consent_form_path && (
                               <p className="text-sm text-gray-500">ยังไม่มีเอกสารที่อัปโหลด</p>
                             )}
                           </div>
@@ -386,24 +413,5 @@ const AdminDashboard = () => {
     </div>
   )
 }
-
-// Add Clock icon import
-const Clock = ({ size, className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="12" cy="12" r="10"/>
-    <polyline points="12 6 12 12 16 14"/>
-  </svg>
-)
 
 export default AdminDashboard

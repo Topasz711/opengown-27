@@ -29,7 +29,6 @@ const Dashboard = () => {
     submittedAt: '2024-10-15',
     documents: {
       photo: false,
-      transcript: false,
       consentForm: false
     }
   }
@@ -122,7 +121,6 @@ const Dashboard = () => {
             <div className="space-y-3">
               {[
                 { key: 'photo', label: 'รูปถ่าย' },
-                { key: 'transcript', label: 'ปพ.1 (ทรานสคริปต์)' },
                 { key: 'consentForm', label: 'ใบขออนุญาตผู้ปกครอง' }
               ].map((doc) => (
                 <div key={doc.key} className="flex items-center justify-between">
@@ -144,10 +142,9 @@ const Dashboard = () => {
             <Upload size={24} />
             อัปโหลดเอกสาร
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               { key: 'photo', label: 'รูปถ่าย', accept: 'image/*' },
-              { key: 'transcript', label: 'ปพ.1', accept: '.pdf,.jpg,.png' },
               { key: 'consentForm', label: 'ใบอนุญาต', accept: '.pdf,.jpg,.png' }
             ].map((doc) => (
               <div key={doc.key} className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
