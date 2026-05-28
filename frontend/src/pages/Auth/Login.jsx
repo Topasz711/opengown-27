@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import { supabase } from '../../supabaseClient'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
@@ -19,30 +21,15 @@ const Login = () => {
     setLoading(true)
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password
-      })
-
-      if (error) {
-        if (error.message.includes('Invalid login credentials')) {
-          throw new Error('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
-        }
-        throw new Error(error.message || 'เข้าสู่ระบบไม่สำเร็จ')
-      }
-
-      // บันทึกข้อมูลผู้ใช้ลงใน localStorage
-      localStorage.setItem('token', data.session?.access_token)
-      localStorage.setItem('user', JSON.stringify({
-        id: data.user?.id,
-        email: data.user?.email,
-        ...data.user?.user_metadata
-      }))
-
+      await login(formData.email, formData.password)
       navigate('/dashboard')
     } catch (err) {
       console.error('Login error:', err)
-      setError(err.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      if (err.message.includes('Invalid login credentials')) {
+        setError('อีเมลหรือรหัสผ่านไม่ถูกต้อง')
+      } else {
+        setError(err.message || 'เข้าสู่ระบบไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      }
     } finally {
       setLoading(false)
     }
@@ -131,44 +118,16 @@ const Login = () => {
             <button 
               onClick={async () => {
                 try {
-                  // Simulated Google Login - create user if not exists
-                  const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-                  const googleEmail = 'googleuser@gmail.com'
-                  
-                  let existingGoogleUser = registeredUsers.find(u => u.email === googleEmail)
-                  
-                  if (!existingGoogleUser) {
-                    // Create new Google user
-                    const newUser = {
-                      id: Date.now(),
-                      name: 'Google User',
-                      email: googleEmail,
-                      status: 'active',
-                      provider: 'google',
-                      password: '',
-                      createdAt: new Date().toISOString()
+                  const { data, error } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                      redirectTo: window.location.origin + '/dashboard'
                     }
-                    registeredUsers.push(newUser)
-                    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-                    existingGoogleUser = newUser
-                  }
-                  
-                  // Login the Google user
-                  const userData = {
-                    id: existingGoogleUser.id,
-                    name: existingGoogleUser.name,
-                    email: existingGoogleUser.email,
-                    status: existingGoogleUser.status
-                  }
-                  
-                  localStorage.setItem('token', 'google-token-' + Date.now())
-                  localStorage.setItem('user', JSON.stringify(userData))
-                  
-                  // Update auth context state
-                  window.dispatchEvent(new Event('storage'))
-                  navigate('/dashboard')
+                  })
+                  if (error) throw error
                 } catch (err) {
                   console.error('Google login error:', err)
+                  setError('เข้าสู่ระบบด้วย Google ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
                 }
               }}
               className="w-full flex items-center justify-center gap-3 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"

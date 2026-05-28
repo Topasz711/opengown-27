@@ -52,7 +52,9 @@ const Navbar = () => {
                   <span>{user?.name || 'Dashboard'}</span>
                 </Link>
                 <button
-                  onClick={logout}
+                  onClick={async () => {
+                    await logout()
+                  }}
                   className="flex items-center space-x-2 text-red-600 hover:text-red-700"
                 >
                   <LogOut size={20} />
@@ -110,8 +112,8 @@ const Navbar = () => {
                   Dashboard
                 </Link>
                 <button
-                  onClick={() => {
-                    logout()
+                  onClick={async () => {
+                    await logout()
                     setIsOpen(false)
                   }}
                   className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-red-50"
