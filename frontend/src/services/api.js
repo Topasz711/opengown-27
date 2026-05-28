@@ -10,11 +10,15 @@ export const authAPI = {
 
 // Application APIs
 export const applicationAPI = {
+  // บันทึกหรืออัปเดตใบสมัคร (Upsert)
   submit: async (data) => {
     const { data: result, error } = await supabase
       .from('applications')
-      .insert([data])
+      // จุดสำคัญ: เปลี่ยนจาก insert เป็น upsert
+      // และใส่เงื่อนไข onConflict เพื่อบอกว่าถ้า user_id ซ้ำ ให้อัปเดตข้อมูลทับไปเลย
+      .upsert(data, { onConflict: 'user_id' }) 
       .select()
+      
     if (error) throw error
     return result
   },
