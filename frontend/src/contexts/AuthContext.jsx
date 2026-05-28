@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
-import { authAPI } from '../services/api'
+import { supabase } from '../supabaseClient'
 
 const AuthContext = createContext(null)
 
@@ -16,59 +16,59 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user is logged in via token
-    const token = localStorage.getItem('token')
-    
-    if (token) {
-      // Fetch user data from API
-      authAPI.me()
-        .then(response => {
-          setUser(response.data)
-        })
-        .catch(error => {
-          console.error('Error fetching user data:', error)
-          localStorage.removeItem('token')
-        })
-        .finally(() => {
-          setLoading(false)
-        })
-    } else {
+    // 1. ดึงข้อมูล session ปัจจุบันเมื่อโหลดแอปพลิเคชัน
+    const fetchSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession()
+      if (error) {
+        console.error('Error fetching session:', error)
+      }
+      setUser(session?.user ?? null)
       setLoading(false)
+    }
+
+    fetchSession()
+
+    // 2. ดักจับการเปลี่ยนแปลงของสถานะ Auth (เช่น เมื่อผู้ใช้กดล็อกอิน หรือ ล็อกเอาต์)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null)
+        setLoading(false)
+      }
+    )
+
+    // ทำความสะอาด listener เมื่อ component ถูกทำลาย
+    return () => {
+      subscription.unsubscribe()
     }
   }, [])
 
+  // ฟังก์ชันสำหรับล็อกอิน
   const login = async (email, password) => {
-    try {
-      // เรียกใช้ authAPI ตัวที่เรา import มาข้างบนให้ถูกต้อง
-      const response = await authAPI.login(email, password)
-      const { access_token } = response.data
-      
-      localStorage.setItem('token', access_token)
-      
-      // Fetch user data ดึงข้อมูลผู้ใช้งานปัจจุบันกลับมาเก็บใน state
-      const userResponse = await authAPI.me()
-      setUser(userResponse.data)
-      
-      return userResponse.data
-    } catch (error) {
-      console.error('Login error:', error)
-      throw new Error(error.response?.data?.detail || 'การเข้าสู่ระบบไม่สำเร็จ')
-    }
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if (error) throw error
+    return data
   }
 
-  const register = async (userData) => {
-    try {
-      const response = await authAPI.register(userData)
-      return response.data
-    } catch (error) {
-      console.error('Registration error:', error)
-      throw new Error(error.response?.data?.detail || 'การสมัครไม่สำเร็จ')
-    }
+  // ฟังก์ชันสำหรับสมัครสมาชิก
+  const register = async (email, password, userMetadata = {}) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: userMetadata, // สามารถแนบข้อมูลเพิ่มเติม เช่น ชื่อ หรือ เบอร์โทร ไปเก็บใน Supabase ได้
+      }
+    })
+    if (error) throw error
+    return data
   }
 
-  const logout = () => {
-    localStorage.removeItem('token')
-    setUser(null)
+  // ฟังก์ชันสำหรับออกจากระบบ
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (error) throw error
   }
 
   const value = {
@@ -80,5 +80,5 @@ export const AuthProvider = ({ children }) => {
     logout
   }
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
 }

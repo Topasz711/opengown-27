@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { supabase } from '../../supabaseClient' // นำเข้า Supabase client
+import { useAuth } from '../../contexts/AuthContext'
 import { Mail, Lock, User, Phone, Eye, EyeOff } from 'lucide-react'
 
 const Register = () => {
   const navigate = useNavigate()
+  const { register } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
@@ -37,34 +38,24 @@ const Register = () => {
     setLoading(true)
 
     try {
-      // ใช้ Supabase Auth ในการลงทะเบียน
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            full_name: `${formData.firstName} ${formData.lastName}`,
-            phone: formData.phone,
-            school: formData.school,
-            role: 'student'
-          }
-        }
+      await register(formData.email, formData.password, {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        full_name: `${formData.firstName} ${formData.lastName}`,
+        phone: formData.phone,
+        school: formData.school,
+        role: 'student'
       })
-
-      if (error) {
-        if (error.message.includes('User already registered')) {
-          throw new Error('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่นหรือเข้าสู่ระบบ')
-        }
-        throw new Error(error.message || 'การสมัครไม่สำเร็จ')
-      }
 
       alert('สมัครสมาชิกสำเร็จ! กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชี (หากเปิดใช้งาน) หรือเข้าสู่ระบบได้เลย')
       navigate('/login')
     } catch (err) {
       console.error('Registration error:', err)
-      setError(err.message || 'การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      if (err.message.includes('User already registered')) {
+        setError('อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่นหรือเข้าสู่ระบบ')
+      } else {
+        setError(err.message || 'การสมัครไม่สำเร็จ กรุณาลองใหม่อีกครั้ง')
+      }
     } finally {
       setLoading(false)
     }

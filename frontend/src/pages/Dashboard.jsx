@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, FileText, Upload, CheckCircle, Clock, AlertCircle } from 'lucide-react'
+import { User, FileText, Upload, CheckCircle, Clock, AlertCircle, LogOut } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 const Dashboard = () => {
-  const { user, isAuthenticated } = useAuth()
+  const { user, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
-  const [applicationData, setApplicationData] = useState(null)
-
+  
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login')
     }
   }, [isAuthenticated, navigate])
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+      navigate('/')
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
+  }
 
   // Mock application data
   const mockApplication = {
@@ -88,11 +96,19 @@ const Dashboard = () => {
             <div className="space-y-3">
               <div>
                 <label className="text-sm text-gray-500">ชื่อ-นามสกุล</label>
-                <p className="text-gray-800">{user?.name || 'ยังไม่ได้ระบุ'}</p>
+                <p className="text-gray-800">{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'ยังไม่ได้ระบุ'}</p>
               </div>
               <div>
                 <label className="text-sm text-gray-500">อีเมล</label>
                 <p className="text-gray-800">{user?.email || 'ยังไม่ได้ระบุ'}</p>
+              </div>
+              <div>
+                <label className="text-sm text-gray-500">โรงเรียน</label>
+                <p className="text-gray-800">{user?.user_metadata?.school || 'ยังไม่ได้ระบุ'}</p>
+              </div>
+              <div>
+                <label className="text-sm text-gray-500">เบอร์โทรศัพท์</label>
+                <p className="text-gray-800">{user?.user_metadata?.phone || 'ยังไม่ได้ระบุ'}</p>
               </div>
             </div>
           </div>
