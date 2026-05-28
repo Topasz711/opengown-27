@@ -63,12 +63,20 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center space-x-3">
+                {/* ปุ่ม เข้าสู่ระบบ ถูกซ่อนไว้ตามคำขอ */}
+                {/* 
                 <Link to="/login" className="text-gray-600 hover:text-primary font-medium">
                   เข้าสู่ระบบ
-                </Link>
-                <Link to="/register" className="btn-primary text-sm">
+                </Link> 
+                */}
+                <a 
+                  href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-primary text-sm"
+                >
                   สมัครเลย
-                </Link>
+                </a>
               </div>
             )}
           </div>
@@ -123,20 +131,24 @@ const Navbar = () => {
               </>
             ) : (
               <>
+                {/* ปุ่ม เข้าสู่ระบบ ถูกซ่อนไว้ตามคำขอ */}
+                {/* 
                 <Link
                   to="/login"
                   onClick={() => setIsOpen(false)}
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50"
                 >
                   เข้าสู่ระบบ
-                </Link>
-                <Link
-                  to="/register"
-                  onClick={() => setIsOpen(false)}
+                </Link> 
+                */}
+                <a
+                  href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block px-3 py-2 rounded-md text-base font-medium btn-primary text-center mt-2"
                 >
                   สมัครเลย
-                </Link>
+                </a>
               </>
             )}
           </div>

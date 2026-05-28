@@ -9,9 +9,10 @@ import Activities from './src/pages/Activities'
 import Schedule from './src/pages/Schedule'
 import Contact from './src/pages/Contact'
 import FAQ from './src/pages/FAQ'
-import Login from './src/pages/Auth/Login'
-import Register from './src/pages/Auth/Register'
-import Dashboard from './src/pages/Dashboard'
+// Import สำหรับระบบ Login/Register ถูกเก็บไว้เผื่อใช้งานในอนาคต
+// import Login from './src/pages/Auth/Login'
+// import Register from './src/pages/Auth/Register'
+// import Dashboard from './src/pages/Dashboard'
 import AdminDashboard from './src/pages/AdminDashboard'
 
 function App() {
@@ -28,9 +29,10 @@ function App() {
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/faq" element={<FAQ />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              {/* Routes สำหรับระบบ Login/Register ถูกคอมเมนต์ไว้เผื่อใช้งานในอนาคต */}
+              {/* <Route path="/login" element={<Login />} /> */}
+              {/* <Route path="/register" element={<Register />} /> */}
+              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
               <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
           </main>
