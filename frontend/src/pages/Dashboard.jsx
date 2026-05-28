@@ -2,15 +2,45 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User, FileText, Upload, CheckCircle, Clock, AlertCircle, LogOut } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
+import { applicationAPI } from '../services/api'
 
 const Dashboard = () => {
   const { user, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
   
+  // State for essay and file uploads
+  const [essay, setEssay] = useState('')
+  const [isSaving, setIsSaving] = useState(false)
+  const [applicationData, setApplicationData] = useState(null)
+  const [documents, setDocuments] = useState({
+    photo: false,
+    consentForm: false
+  })
+  
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login')
     }
+    
+    // Fetch existing application data
+    const fetchApplication = async () => {
+      try {
+        const data = await applicationAPI.get()
+        if (data && data.length > 0) {
+          const app = data[0]
+          setApplicationData(app)
+          setEssay(app.essay || '')
+          setDocuments({
+            photo: !!app.photo_url,
+            consentForm: !!app.consent_form_url
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching application:', error)
+      }
+    }
+    
+    fetchApplication()
   }, [isAuthenticated, navigate])
 
   const handleLogout = async () => {
@@ -22,14 +52,53 @@ const Dashboard = () => {
     }
   }
 
-  // Mock application data
-  const mockApplication = {
-    id: 1,
-    status: 'pending', // pending, under_review, accepted, rejected
-    submittedAt: '2024-10-15',
-    documents: {
-      photo: false,
-      consentForm: false
+  // Handle essay save
+  const handleSaveEssay = async () => {
+    try {
+      setIsSaving(true)
+      
+      if (applicationData) {
+        // Update existing application
+        await applicationAPI.update(applicationData.id, { essay })
+      } else {
+        // Create new application
+        await applicationAPI.submit({ 
+          user_id: user.id, 
+          essay: essay 
+        })
+      }
+      alert('บันทึกคำตอบเรียบร้อยแล้ว!')
+    } catch (error) {
+      alert('เกิดข้อผิดพลาด: ' + error.message)
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  // Handle file upload
+  const handleFileUpload = async (docKey, file) => {
+    if (!file) return
+    
+    try {
+      const fileUrl = await applicationAPI.uploadDocument(user.id, file)
+      
+      // Determine which field to update based on docKey
+      const updateField = docKey === 'photo' ? 'photo_url' : 'consent_form_url'
+      
+      if (applicationData) {
+        await applicationAPI.update(applicationData.id, { [updateField]: fileUrl })
+      } else {
+        await applicationAPI.submit({ 
+          user_id: user.id, 
+          [updateField]: fileUrl 
+        })
+      }
+      
+      // Update local state
+      setDocuments(prev => ({ ...prev, [docKey]: true }))
+      alert(`อัปโหลด ${docKey === 'photo' ? 'รูปถ่าย' : 'ใบอนุญาต'} สำเร็จ!`)
+    } catch (error) {
+      alert('อัปโหลดไฟล์ไม่สำเร็จ: ' + error.message)
     }
   }
 
@@ -64,7 +133,9 @@ const Dashboard = () => {
     }
   }
 
-  const currentStatus = statusConfig[mockApplication.status]
+  // Use applicationData if available, otherwise use default pending status
+  const currentApplication = applicationData || { status: 'pending' }
+  const currentStatus = statusConfig[currentApplication.status]
   const StatusIcon = currentStatus.icon
 
   return (
@@ -125,7 +196,7 @@ const Dashboard = () => {
               ].map((doc) => (
                 <div key={doc.key} className="flex items-center justify-between">
                   <span className="text-gray-700">{doc.label}</span>
-                  {mockApplication.documents[doc.key] ? (
+                  {documents[doc.key] ? (
                     <CheckCircle size={20} className="text-green-500" />
                   ) : (
                     <AlertCircle size={20} className="text-orange-500" />
@@ -147,11 +218,24 @@ const Dashboard = () => {
               { key: 'photo', label: 'รูปถ่าย', accept: 'image/*' },
               { key: 'consentForm', label: 'ใบอนุญาต', accept: '.pdf,.jpg,.png' }
             ].map((doc) => (
-              <div key={doc.key} className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
+              <div key={doc.key} className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary transition-colors">
                 <Upload size={32} className="mx-auto text-gray-400 mb-2" />
                 <p className="text-sm text-gray-600 mb-2">{doc.label}</p>
-                <input type="file" accept={doc.accept} className="hidden" />
-                <button className="text-primary text-sm font-medium">เลือกไฟล์</button>
+                <input 
+                  type="file" 
+                  accept={doc.accept} 
+                  className="hidden" 
+                  id={`file-${doc.key}`}
+                  onChange={async (e) => {
+                    const file = e.target.files[0]
+                    await handleFileUpload(doc.key, file)
+                    // Reset input value to allow re-uploading the same file
+                    e.target.value = ''
+                  }}
+                />
+                <label htmlFor={`file-${doc.key}`} className="text-primary text-sm font-medium cursor-pointer">
+                  เลือกไฟล์
+                </label>
               </div>
             ))}
           </div>
@@ -166,13 +250,21 @@ const Dashboard = () => {
                 คำถาม: ทำไมคุณถึงอยากเป็นแพทย์ และทำไมต้องวชิรพยาบาล?
               </label>
               <textarea
+                value={essay}
+                onChange={(e) => setEssay(e.target.value)}
                 className="w-full h-40 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="เขียนคำตอบของคุณที่นี่ (ไม่เกิน 500 คำ)"
                 maxLength="500"
               />
-              <p className="text-sm text-gray-500 text-right mt-1">0 / 500 คำ</p>
+              <p className="text-sm text-gray-500 text-right mt-1">{essay.length} / 500 คำ</p>
             </div>
-            <button className="btn-primary">บันทึกคำตอบ</button>
+            <button 
+              onClick={handleSaveEssay}
+              disabled={isSaving}
+              className="btn-primary disabled:opacity-50"
+            >
+              {isSaving ? 'กำลังบันทึก...' : 'บันทึกคำตอบ'}
+            </button>
           </div>
         </div>
       </div>
