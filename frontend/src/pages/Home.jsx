@@ -177,7 +177,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
-              { step: '01', title: 'เปิดรับสมัคร', desc: 'มิถุนายน - สิงหาคม', color: 'border-blue-500' },
+              { step: '01', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-blue-500' },
               { step: '02', title: 'ประกาศผล', desc: 'กันยายน', color: 'border-teal-500' },
               { step: '03', title: 'วันจัดค่าย', desc: 'ตุลาคม', color: 'border-indigo-500' }
             ].map((item, index) => (
