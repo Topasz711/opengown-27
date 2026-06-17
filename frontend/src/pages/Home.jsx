@@ -179,7 +179,7 @@ const Home = () => {
             {[
               { step: '01', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-blue-500' },
               { step: '02', title: 'ประกาศผล', desc: 'กันยายน', color: 'border-teal-500' },
-              { step: '03', title: 'วันจัดค่าย', desc: 'ตุลาคม', color: 'border-indigo-500' }
+              { step: '03', title: 'วันจัดค่าย', desc: '6 พฤศจิกายน 2569 - 8 พฤศจิกายน 2569', color: 'border-indigo-500' }
             ].map((item, index) => (
               <div key={index} className={`relative p-6 border-l-4 ${item.color} bg-slate-50 rounded-r-xl`}>
                 <div className="text-4xl font-bold text-slate-200 absolute top-2 right-4">{item.step}</div>
