@@ -20,8 +20,8 @@ const TimelinePage = () => {
             {[
               {
                 title: 'เปิดรับสมัคร',
-                date: '1 กันยายน 2569',
-                endDate: '31 กันยายน 2569, 23:59 น.',
+                date: '15 สิงหาคม 2569',
+                endDate: '19 กันยายน 2569, 23:59 น.',
                 description: 'ช่วงเวลารับสมัครเข้าร่วมค่ายออนไลน์',
                 status: 'current',
                 color: 'bg-blue-500'
