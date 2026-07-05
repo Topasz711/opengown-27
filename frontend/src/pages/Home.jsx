@@ -178,7 +178,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
               { step: '01', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-blue-500' },
-              { step: '02', title: 'ประกาศผล', desc: '15 ตุลาคม 2569', color: 'border-teal-500' },
+              { step: '02', title: 'ประกาศผล', desc: '1 ตุลาคม 2569', color: 'border-teal-500' },
               { step: '03', title: 'วันจัดค่าย', desc: '6-8 พฤศจิกายน 2569', color: 'border-indigo-500' }
             ].map((item, index) => (
               <div key={index} className={`relative p-6 border-l-4 ${item.color} bg-slate-50 rounded-r-xl`}>

@@ -28,14 +28,14 @@ const TimelinePage = () => {
               },
               {
                 title: 'ประกาศผลคัดเลือก',
-                date: '15 ตุลาคม 2569',
+                date: '1 ตุลาคม 2569',
                 description: 'ประกาศรายชื่อผู้ผ่านการคัดเลือกรอบแรก',
                 status: 'upcoming',
                 color: 'bg-green-500'
               },
               {
                 title: 'ยืนยันสิทธิ์',
-                date: '15-25 ตุลาคม 2569',
+                date: '1-5 ตุลาคม 2569',
                 description: 'ชำระเงินและส่งเอกสารยืนยันสิทธิ์',
                 status: 'upcoming',
                 color: 'bg-orange-500'
