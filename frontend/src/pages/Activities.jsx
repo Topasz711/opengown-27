@@ -96,7 +96,9 @@ const Activities = () => {
             สมัครเลยวันนี้!
           </p>
           <a
-            href="/register"
+            href="https://forms.gle/nmBzRyd8rUPnWgTRA"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
           >
             สมัครเลยตอนนี้
