@@ -99,7 +99,7 @@ const Activities = () => {
             href="/register"
             className="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            สมัครสมาชิกตอนนี้
+            สมัครเลยตอนนี้
           </a>
         </div>
       </div>

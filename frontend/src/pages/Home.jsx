@@ -214,7 +214,7 @@ const Home = () => {
             rel="noopener noreferrer"
             className="inline-block bg-white text-blue-600 font-bold py-4 px-12 rounded-xl text-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-xl"
           >
-            สมัครสมาชิกตอนนี้
+            สมัครเลยตอนนี้
           </a>
         </div>
       </section>
