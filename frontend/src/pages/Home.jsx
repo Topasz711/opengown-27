@@ -46,7 +46,7 @@ const Home = () => {
             {/* Action Buttons - Pastel Orange/Amber */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2 max-w-xl mx-auto lg:mx-0">
               <a
-                href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse"
+                href="https://forms.gle/nmBzRyd8rUPnWgTRA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 transform hover:-translate-y-0.5 transition-all shadow-md shadow-orange-500/20"
@@ -209,7 +209,7 @@ const Home = () => {
             สมัครเลยวันนี้ อย่าพลาดโอกาสดีๆ ที่จะเปลี่ยนอนาคตของคุณ
           </p>
           <a
-            href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse"
+            href="https://forms.gle/nmBzRyd8rUPnWgTRA"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white text-blue-600 font-bold py-4 px-12 rounded-xl text-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-xl"
