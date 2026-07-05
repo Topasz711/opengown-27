@@ -70,7 +70,7 @@ const Navbar = () => {
                 </Link> 
                 */}
                 <a 
-                  href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse" 
+                  href="https://forms.gle/nmBzRyd8rUPnWgTRA" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn-primary text-sm"
@@ -142,7 +142,7 @@ const Navbar = () => {
                 </Link> 
                 */}
                 <a
-                  href="https://docs.google.com/forms/d/1BVPPkg4CFk1Zk2zGK92G8c7KF7wbMQOYxYsoHlLIcUo/previewResponse"
+                  href="https://forms.gle/nmBzRyd8rUPnWgTRA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block px-3 py-2 rounded-md text-base font-medium btn-primary text-center mt-2"
