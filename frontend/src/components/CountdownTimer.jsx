@@ -34,26 +34,10 @@ const CountdownTimer = ({ targetDate }) => {
   }
 
   const timeUnits = [
-    {
-      value: timeLeft.days,
-      label: 'วัน',
-      style: 'border-blue-600 bg-blue-600 text-white',
-    },
-    {
-      value: timeLeft.hours,
-      label: 'ชั่วโมง',
-      style: 'border-blue-100 bg-blue-50/60 text-slate-800',
-    },
-    {
-      value: timeLeft.minutes,
-      label: 'นาที',
-      style: 'border-blue-100 bg-blue-50/60 text-slate-800',
-    },
-    {
-      value: timeLeft.seconds,
-      label: 'วินาที',
-      style: 'border-blue-100 bg-blue-50/60 text-slate-800',
-    },
+    { value: timeLeft.days, label: 'วัน' },
+    { value: timeLeft.hours, label: 'ชั่วโมง' },
+    { value: timeLeft.minutes, label: 'นาที' },
+    { value: timeLeft.seconds, label: 'วินาที' },
   ]
 
   const deadlineText = new Intl.DateTimeFormat('th-TH', {
@@ -67,44 +51,49 @@ const CountdownTimer = ({ targetDate }) => {
 
   return (
     <div aria-label="เวลาที่เหลือก่อนปิดรับสมัคร">
-      <div className="mb-5 flex items-center gap-3">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600">
-          <Clock3 size={20} />
+      <div className="mb-4 flex items-center gap-3">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600">
+          <Clock3 size={19} />
         </span>
 
-        <div>
-          <h3 className="font-semibold text-slate-900">
-            ปิดรับสมัครในอีก
-          </h3>
+        <h3 className="font-semibold text-slate-900">
+          ปิดรับสมัครในอีก
+        </h3>
+      </div>
+
+      <div className="overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/80 via-white to-sky-50/70">
+        <div className="grid grid-cols-4 divide-x divide-blue-100">
+          {timeUnits.map((unit, index) => (
+            <div
+              key={unit.label}
+              className="px-2 py-4 text-center"
+            >
+              <div
+                className={`text-3xl font-extrabold leading-none tracking-tight tabular-nums sm:text-4xl ${
+                  index === 0 ? 'text-blue-600' : 'text-slate-800'
+                }`}
+              >
+                {String(unit.value).padStart(2, '0')}
+              </div>
+
+              <div
+                className={`mt-2 text-xs font-medium ${
+                  index === 0 ? 'text-blue-500' : 'text-slate-500'
+                }`}
+              >
+                {unit.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {timeUnits.map((unit) => (
-          <div
-            key={unit.label}
-            className={`rounded-2xl border px-3 py-3.5 text-center ${unit.style}`}
-          >
-            <div className="text-3xl font-extrabold leading-none tracking-tight tabular-nums sm:text-4xl">
-              {String(unit.value).padStart(2, '0')}
-            </div>
-
-            <div className="mt-2 text-xs font-medium opacity-70">
-              {unit.label}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-4 flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-600">
-        <CalendarDays
-          size={17}
-          className="shrink-0 text-slate-500"
-        />
+      <div className="mt-3 flex items-center gap-2 px-1 text-sm text-slate-500">
+        <CalendarDays size={16} className="shrink-0" />
 
         <span>
           ปิดรับสมัคร{' '}
-          <strong className="font-semibold text-slate-800">
+          <strong className="font-semibold text-slate-700">
             {deadlineText}
           </strong>
         </span>
