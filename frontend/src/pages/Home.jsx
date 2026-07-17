@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import CountdownTimer from '../components/CountdownTimer'
 
 const Home = () => {
-  const applicationDeadline = '2026-09-19T23:59:59'
+  const applicationDeadline = '2026-09-19T23:59:59+07:00'
   
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
@@ -37,8 +37,7 @@ const Home = () => {
             
             {/* Countdown Timer with Glassmorphism */}
             <div className="py-2 max-w-xl mx-auto lg:mx-0">
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-2xl border border-blue-100 shadow-sm">
-                <p className="text-xs font-medium text-slate-400 mb-2 text-center lg:text-left">⏰ ระยะเวลาที่เหลือสำหรับเปิดรับสมัคร</p>
+              <div className="rounded-3xl border border-blue-100 bg-white/90 p-5 shadow-[0_18px_50px_-28px_rgba(37,99,235,0.35)] backdrop-blur-sm sm:p-6">
                 <CountdownTimer targetDate={applicationDeadline} />
               </div>
             </div>
