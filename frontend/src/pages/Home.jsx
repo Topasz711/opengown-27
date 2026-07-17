@@ -37,7 +37,7 @@ const Home = () => {
             
             {/* Countdown Timer with Glassmorphism */}
             <div className="py-2 max-w-xl mx-auto lg:mx-0">
-              <div className="rounded-3xl border border-blue-100 bg-white/90 p-5 shadow-[0_18px_50px_-28px_rgba(37,99,235,0.35)] backdrop-blur-sm sm:p-6">
+              <div className="rounded-3xl border border-blue-100 bg-white/90 p-4 shadow-[0_18px_50px_-28px_rgba(37,99,235,0.35)] backdrop-blur-sm sm:p-5">
                 <CountdownTimer targetDate={applicationDeadline} />
               </div>
             </div>
