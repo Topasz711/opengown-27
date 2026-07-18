@@ -1,28 +1,19 @@
-import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Facebook, Instagram, Send } from 'lucide-react'
+import React from 'react'
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    alert('ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับโดยเร็วที่สุด')
-  }
-
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
           ติดต่อเรา
         </h1>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-gray-600 mb-4 max-w-2xl mx-auto">
           มีคำถามหรือข้อสงสัยเกี่ยวกับค่าย Opengown Camp 27th? 
           ติดต่อเราได้เลย เรายินดีให้คำตอบเสมอ
+        </p>
+        <p className="text-center text-primary font-medium mb-12 max-w-2xl mx-auto">
+          แนะนำให้ติดต่อผ่าน Facebook หรือ Instagram เป็นหลัก ขอบคุณครับ
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -94,103 +85,32 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-
-            {/* Google Maps */}
-            <div className="mt-8">
-              <h3 className="font-bold text-gray-800 mb-4">แผนที่</h3>
-              <div className="rounded-lg overflow-hidden shadow-lg relative">
-                <a
-                  href="https://www.google.com/maps/place/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5/@13.7799168,100.5067143,16.5z/data=!4m6!3m5!1s0x30e2995ff3547271:0x29fa4e9a551a8175!8m2!3d13.7805712!4d100.5091916!16s%2Fg%2F11hdylnpzs?hl=th"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-4 left-4 z-10 bg-white px-4 py-2 rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
-                >
-                  เปิดใน Maps ↗
-                </a>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.006903828945!2d100.50661669999999!3d13.7805712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2995ff3547271%3A0x29fa4e9a551a8175!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lin4LiK4Liy4Lie4Liy4Lia4Liy4Lil!5e0!3m2!1sth!2sth!4v1716462000000!5m2!1sth!2sth"
-                  width="100%"
-                  height="450"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="โรงพยาบาลวชิรพยาบาล"
-                  className="w-full h-full rounded-xl"
-                ></iframe>
-              </div>
-            </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="card">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">ส่งข้อความถึงเรา</h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  ชื่อ-นามสกุล *
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="กรอกชื่อของคุณ"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  อีเมล *
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="example@email.com"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  หัวข้อ *
-                </label>
-                <select
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  required
-                >
-                  <option value="">เลือกหัวข้อ</option>
-                  <option value="general">คำถามทั่วไป</option>
-                  <option value="application">การสมัคร</option>
-                  <option value="technical">ปัญหาทางเทคนิค</option>
-                  <option value="other">อื่นๆ</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  ข้อความ *
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="พิมพ์ข้อความของคุณที่นี่..."
-                  required
-                />
-              </div>
-
-              <button type="submit" className="w-full btn-primary flex items-center justify-center gap-2">
-                <Send size={20} />
-                ส่งข้อความ
-              </button>
-            </form>
+          {/* Google Maps */}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">แผนที่</h2>
+            <div className="rounded-lg overflow-hidden shadow-lg relative h-full">
+              <a
+                href="https://www.google.com/maps/place/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5/@13.7799168,100.5067143,16.5z/data=!4m6!3m5!1s0x30e2995ff3547271:0x29fa4e9a551a8175!8m2!3d13.7805712!4d100.5091916!16s%2Fg%2F11hdylnpzs?hl=th"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 left-4 z-10 bg-white px-4 py-2 rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+              >
+                เปิดใน Maps ↗
+              </a>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.006903828945!2d100.50661669999999!3d13.7805712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2995ff3547271%3A0x29fa4e9a551a8175!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lin4LiK4Liy4Lie4Liy4Lia4Liy4Lil!5e0!3m2!1sth!2sth!4v1716462000000!5m2!1sth!2sth"
+                width="100%"
+                height="600"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="โรงพยาบาลวชิรพยาบาล"
+                className="w-full h-full rounded-xl"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
