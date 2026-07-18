@@ -90,7 +90,7 @@ const Contact = () => {
           {/* Google Maps */}
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-6">แผนที่</h2>
-            <div className="rounded-lg overflow-hidden shadow-lg relative h-full">
+            <div className="rounded-lg overflow-hidden shadow-lg relative w-full" style={{ maxHeight: '450px' }}>
               <a
                 href="https://www.google.com/maps/place/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5%E0%B8%A7%E0%B8%8A%E0%B8%B4%E0%B8%A3%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5/@13.7799168,100.5067143,16.5z/data=!4m6!3m5!1s0x30e2995ff3547271:0x29fa4e9a551a8175!8m2!3d13.7805712!4d100.5091916!16s%2Fg%2F11hdylnpzs?hl=th"
                 target="_blank"
@@ -102,7 +102,7 @@ const Contact = () => {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.006903828945!2d100.50661669999999!3d13.7805712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2995ff3547271%3A0x29fa4e9a551a8175!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lin4LiK4Liy4Lie4Liy4Lia4Liy4Lil!5e0!3m2!1sth!2sth!4v1716462000000!5m2!1sth!2sth"
                 width="100%"
-                height="600"
+                height="450"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
