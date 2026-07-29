@@ -62,9 +62,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={20} className="text-accent" />
-                <a href="tel:02-xxx-xxxx" className="text-gray-300 hover:text-white text-sm">
-                  02-xxx-xxxx
-                </a>
+                <span className="text-gray-300 text-sm">
+                  ติดต่อผ่าน Facebook หรือ Instagram
+                </span>
               </li>
             </ul>
 
