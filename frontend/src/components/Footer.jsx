@@ -1,5 +1,5 @@
 import React from 'react'
-import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -60,33 +60,7 @@ const Footer = () => {
                   opengown27@gmail.com
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={20} className="text-accent" />
-                <span className="text-gray-300 text-sm">
-                  ติดต่อผ่าน Facebook หรือ Instagram
-                </span>
-              </li>
             </ul>
-
-            {/* Social Media */}
-            <div className="flex space-x-4 mt-4">
-              <a
-                href="https://facebook.com/OpengownCamp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                <Facebook size={24} />
-              </a>
-              <a
-                href="https://instagram.com/opengowncamp/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                <Instagram size={24} />
-              </a>
-            </div>
           </div>
         </div>
 
