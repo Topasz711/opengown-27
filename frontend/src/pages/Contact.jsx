@@ -43,8 +43,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">อีเมล</h3>
-                  <a href="mailto:opengown27@example.com" className="text-primary hover:underline">
-                    opengown27@example.com
+                  <a href="mailto:opengown27@gmail.com" className="text-primary hover:underline">
+                    opengown27@gmail.com
                   </a>
                 </div>
               </div>
