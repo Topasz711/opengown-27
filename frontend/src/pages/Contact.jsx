@@ -55,9 +55,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">โทรศัพท์</h3>
-                  <a href="tel:02-xxx-xxxx" className="text-primary hover:underline">
-                    02-xxx-xxxx
-                  </a>
+                  <p className="text-gray-600">ติดต่อผ่าน Facebook หรือ Instagram</p>
                   <p className="text-sm text-gray-500">จันทร์-ศุกร์ 09:00-17:00 น.</p>
                 </div>
               </div>
