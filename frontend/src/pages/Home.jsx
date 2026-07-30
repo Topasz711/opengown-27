@@ -97,7 +97,7 @@ const Home = () => {
           {/* Statistics Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: Users, value: '100+', label: 'ผู้เข้าร่วมต่อรุ่น', color: 'bg-blue-100 text-blue-600' },
+              { icon: Users, value: '130', label: 'ผู้เข้าร่วมต่อรุ่น', color: '#7B5948' },
               { icon: Calendar, value: '3', label: 'วัน', color: 'bg-teal-100 text-teal-600' },
               { icon: Award, value: '10+', label: 'เวิร์กช็อป', color: 'bg-indigo-100 text-indigo-600' },
               { icon: Heart, value: '27', label: 'ครั้งที่', color: 'bg-rose-100 text-rose-600' }
@@ -105,8 +105,17 @@ const Home = () => {
               const Icon = stat.icon
               return (
                 <div key={index} className="bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow text-center">
-                  <div className={`w-14 h-14 ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                    <Icon size={28} />
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    style={{ backgroundColor: stat.color === '#7B5948' ? stat.color : '', color: stat.color === '#7B5948' ? '#fff' : '' }}
+                  >
+                    {stat.color === '#7B5948' ? (
+                      <Icon size={28} />
+                    ) : (
+                      <div className={`${stat.color} w-full h-full rounded-xl flex items-center justify-center`}>
+                        <Icon size={28} />
+                      </div>
+                    )}
                   </div>
                   <div className="text-3xl font-bold text-slate-800 mb-1">{stat.value}</div>
                   <div className="text-slate-600 text-sm">{stat.label}</div>
