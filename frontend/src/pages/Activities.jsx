@@ -22,7 +22,7 @@ const Activities = () => {
     {
       id: 3,
       title: 'Hospital Tour',
-      description: 'บุกห้องฉุกเฉิน (ER) และห้องผ่าตัด (OR) พร้อมชมการทำงานของแพทย์และทีมสหวิชาชีพ',
+      description: 'ทัวร์รถพยาบาล และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
       icon: Hospital,
       color: 'bg-green-500',
       image: '/images/hospital-tour.jpg'
@@ -45,8 +45,8 @@ const Activities = () => {
     },
     {
       id: 6,
-      title: 'ละครค่าย',
-      description: 'แสดงละครสร้างสรรค์ที่ถ่ายทอดเรื่องราวเกี่ยวกับวิชาชีพแพทย์และแรงบันดาลใจ',
+      title: 'PBL case',
+      description: 'เป็นกิจกรรมที่ทำให้น้อง ๆ ได้ฝึกทักษะการคิดวิเคราะห์ วินิจฉัยโรค ร่วมกับเพื่อน ๆ ในกลุ่ม ด้วยกระบวนการ Problem base learning ผ่านละครที่สอดแทรกทั้งความรู้และความสนุก',
       icon: Drama,
       color: 'bg-pink-500',
       image: '/images/drama.jpg'
