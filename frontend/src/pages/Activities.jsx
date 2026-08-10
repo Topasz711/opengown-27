@@ -5,16 +5,16 @@ const Activities = () => {
   const activities = [
     {
       id: 1,
-      title: 'Gross Anatomy',
-      description: 'สัมผัสประสบการณ์เรียนรู้จากร่างอาจารย์ใหญ่ในห้อง Gross Anatomy ที่ทันสมัย พร้อมคำแนะนำจากอาจารย์ผู้เชี่ยวชาญ',
+      title: 'Pre-Clinical',
+      description: 'เรียนรู้ Lab ต่างๆ เหมือนนักศึกษาแพทย์ชั้นพรีคลินิก ได้ลงมือทำจริงจากอาจารย์ผู้เชี่ยวชาญ',
       icon: Stethoscope,
       color: 'bg-blue-500',
       image: '/images/gross-anatomy.jpg'
     },
     {
       id: 2,
-      title: 'Clinical Skills Workshop',
-      description: 'เวิร์กช็อปหัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด, CPR, Physical Examination จากพี่ๆ นศพ.',
+      title: 'Clinic',
+      description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR เข้าเผือก ฯลฯ จากพี่ ๆ นศพ',
       icon: Heart,
       color: 'bg-red-500',
       image: '/images/clinical-skills.jpg'
@@ -29,7 +29,7 @@ const Activities = () => {
     },
     {
       id: 4,
-      title: 'Talk & Inspiration',
+      title: 'Med Talk',
       description: 'การแชร์ประสบการณ์จากอาจารย์หมอและพี่ๆ นศพ. เกี่ยวกับชีวิตการเรียนแพทย์และการทำงานในโรงพยาบาล',
       icon: Users,
       color: 'bg-purple-500',
@@ -55,7 +55,7 @@ const Activities = () => {
 
   return (
     <div className="py-12 bg-gradient-to-b from-white to-blue-50 pt-24">
-      <h2 className="section-title">กิจกรรมภายในค่าย</h2>
+      <h2 className="section-title">What's in Opengown</h2>
       <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
         ค่าย Opengown Camp 27th มีกิจกรรมหลากหลายที่จะทำให้น้องๆ ได้สัมผัสประสบการณ์จริง
         เรียนรู้เกี่ยวกับวิชาชีพแพทย์ และสร้างมิตรภาพใหม่ๆ
