@@ -10,7 +10,7 @@ const Timeline = ({ timelineData }) => {
       endDate: '2024-09-30T23:59:59',
       description: 'ช่วงเวลารับสมัครเข้าร่วมค่ายออนไลน์',
       icon: Calendar,
-      color: 'bg-blue-500',
+      color: 'bg-primary',
       status: 'completed'
     },
     {
@@ -19,7 +19,7 @@ const Timeline = ({ timelineData }) => {
       date: '2024-10-15',
       description: 'ประกาศรายชื่อผู้ผ่านการคัดเลือกรอบแรก',
       icon: CheckCircle,
-      color: 'bg-green-500',
+      color: 'bg-secondary',
       status: 'upcoming'
     },
     {
@@ -29,7 +29,7 @@ const Timeline = ({ timelineData }) => {
       endDate: '2024-10-25',
       description: 'ชำระเงินและส่งเอกสารยืนยันสิทธิ์',
       icon: AlertCircle,
-      color: 'bg-orange-500',
+      color: 'bg-accent',
       status: 'upcoming'
     },
     {
@@ -60,8 +60,8 @@ const Timeline = ({ timelineData }) => {
             const Icon = item.icon
             const isLeft = index % 2 === 0
             const statusColors = {
-              completed: 'bg-green-100 border-green-500',
-              current: 'bg-blue-100 border-blue-500',
+              completed: 'bg-color-light border-primary',
+              current: 'bg-color-teal border-secondary',
               upcoming: 'bg-gray-100 border-gray-300'
             }
 

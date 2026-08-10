@@ -9,23 +9,23 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
       {/* Hero Section - Modern Light Theme with Soft Blue */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-sky-50/50 to-white py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-b from-color-light via-color-teal/50 to-white py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
         
         {/* Decorative blur effects for depth */}
-        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-200/30 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-[10%] left-[-5%] w-80 h-80 bg-sky-200/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-[10%] left-[-5%] w-80 h-80 bg-secondary/40 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           
           {/* Left Side: Text Content & CTA */}
           <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 border border-blue-500/20 tracking-wide uppercase">
+            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 tracking-wide uppercase">
               ✨ Opengown Camp 27th
             </span>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
               เปิดเสื้อกาวน์ <br />
-              <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 สานฝันสู่วิชาชีพแพทย์
               </span>
             </h1>
@@ -37,7 +37,7 @@ const Home = () => {
             
             {/* Countdown Timer with Glassmorphism */}
             <div className="py-2 max-w-xl mx-auto lg:mx-0">
-              <div className="rounded-2xl border border-blue-100 bg-white/90 p-5 shadow-[0_18px_50px_-30px_rgba(37,99,235,0.35)] backdrop-blur-sm">
+              <div className="rounded-2xl border border-primary/20 bg-white/90 p-5 shadow-[0_18px_50px_-30px_rgba(123,89,72,0.35)] backdrop-blur-sm">
                 <CountdownTimer targetDate={applicationDeadline} />
               </div>
             </div>
@@ -48,7 +48,7 @@ const Home = () => {
                 href="https://forms.gle/nmBzRyd8rUPnWgTRA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 transform hover:-translate-y-0.5 transition-all shadow-md shadow-orange-500/20"
+                className="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-bold rounded-2xl text-white bg-gradient-to-r from-accent to-color-light hover:from-accent hover:to-color-gray transform hover:-translate-y-0.5 transition-all shadow-md shadow-accent/20"
               >
                 <Rocket className="mr-2" size={20} />
                 สมัครเข้าร่วมค่ายเลยตอนนี้
@@ -75,8 +75,8 @@ const Home = () => {
               </div>
               
               {/* Decorative glow effects */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-amber-400/20 rounded-full blur-xl -z-10"></div>
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-400/20 rounded-full blur-xl -z-10"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-xl -z-10"></div>
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full blur-xl -z-10"></div>
             </div>
           </div>
 
@@ -98,9 +98,9 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: Users, value: '130', label: 'ผู้เข้าร่วมต่อรุ่น', color: '#7B5948' },
-              { icon: Calendar, value: '3', label: 'วัน', color: 'bg-teal-100 text-teal-600' },
-              { icon: Award, value: '10+', label: 'เวิร์กช็อป', color: 'bg-indigo-100 text-indigo-600' },
-              { icon: Heart, value: '27', label: 'ครั้งที่', color: 'bg-rose-100 text-rose-600' }
+              { icon: Calendar, value: '3', label: 'วัน', color: 'bg-color-teal text-color-dark' },
+              { icon: Award, value: '10+', label: 'เวิร์กช็อป', color: 'bg-color-light text-color-dark' },
+              { icon: Heart, value: '27', label: 'ครั้งที่', color: 'bg-color-pink text-color-dark' }
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -127,7 +127,7 @@ const Home = () => {
       </section>
 
       {/* Why Join Section - Light Gray Background */}
-      <section className="py-20 px-4 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-color-light to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">ทำไมต้องมาค่ายนี้?</h2>
@@ -142,22 +142,22 @@ const Home = () => {
                 icon: Stethoscope,
                 title: 'เรียนรู้จากของจริง',
                 description: 'ได้สัมผัสการเรียน Gross Anatomy จากอาจารย์ใหญ่จริง และฝึกหัตถการทางการแพทย์กับอุปกรณ์ที่ทันสมัย',
-                color: 'bg-blue-500',
-                accentColor: 'bg-blue-100 text-blue-600'
+                color: 'bg-primary',
+                accentColor: 'bg-primary/10 text-primary'
               },
               {
                 icon: UserPlus,
                 title: 'แนะแนวโดยรุ่นพี่',
                 description: 'ได้รับคำแนะนำตรงจากนักศึกษาแพทย์วชิรพยาบาล และอาจารย์แพทย์ผู้เชี่ยวชาญ',
-                color: 'bg-teal-500',
-                accentColor: 'bg-teal-100 text-teal-600'
+                color: 'bg-secondary',
+                accentColor: 'bg-secondary/10 text-secondary'
               },
               {
                 icon: Heart,
                 title: 'มิตรภาพใหม่',
                 description: 'พบเพื่อนใหม่ที่มีความฝันเดียวกัน สร้างเครือข่ายที่จะช่วยกันในอนาคต',
-                color: 'bg-orange-500',
-                accentColor: 'bg-orange-100 text-orange-600'
+                color: 'bg-accent',
+                accentColor: 'bg-accent/10 text-accent'
               }
             ].map((item, index) => {
               const Icon = item.icon
@@ -185,10 +185,10 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             {[
-              { step: '', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-blue-500' },
-              { step: '', title: 'ประกาศผล', desc: '1 ตุลาคม 2569', color: 'border-teal-500' },
-              { step: '', title: 'ประกาศผลสำรอง', desc: '6 ตุลาคม 2569', color: 'border-orange-500' },
-              { step: '', title: 'วันจัดค่าย', desc: '6-8 พฤศจิกายน 2569', color: 'border-indigo-500' }
+              { step: '', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-primary' },
+              { step: '', title: 'ประกาศผล', desc: '1 ตุลาคม 2569', color: 'border-secondary' },
+              { step: '', title: 'ประกาศผลสำรอง', desc: '6 ตุลาคม 2569', color: 'border-accent' },
+              { step: '', title: 'วันจัดค่าย', desc: '6-8 พฤศจิกายน 2569', color: 'border-color-blue' }
             ].map((item, index) => (
               <div key={index} className={`relative p-6 border-l-4 ${item.color} bg-slate-50 rounded-r-xl`}>
                 <div className="text-4xl font-bold text-slate-200 absolute top-2 right-4">{item.step}</div>
@@ -200,7 +200,7 @@ const Home = () => {
           
           <Link
             to="/timeline"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+            className="inline-flex items-center text-primary hover:text-secondary font-medium"
           >
             ดูไทม์ไลน์เต็มรูปแบบ
             <Rocket className="ml-2" size={18} />
@@ -209,19 +209,19 @@ const Home = () => {
       </section>
 
       {/* CTA Section - Gradient Background */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+      <section className="py-20 px-4 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             พร้อมจะเป็นส่วนหนึ่งของครอบครัววชิรพยาบาลหรือยัง?
           </h2>
-          <p className="text-xl mb-8 text-blue-100 leading-relaxed">
+          <p className="text-xl mb-8 text-white/90 leading-relaxed">
             สมัครเลยวันนี้ อย่าพลาดโอกาสดีๆ ที่จะเปลี่ยนอนาคตของคุณ
           </p>
           <a
             href="https://forms.gle/nmBzRyd8rUPnWgTRA"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-white text-blue-600 font-bold py-4 px-12 rounded-xl text-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-xl"
+            className="inline-block bg-white text-primary font-bold py-4 px-12 rounded-xl text-lg hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-xl"
           >
             สมัครเลยตอนนี้
           </a>

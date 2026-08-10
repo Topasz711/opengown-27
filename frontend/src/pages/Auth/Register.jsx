@@ -62,7 +62,7 @@ const Register = () => {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white">
       <div className="max-w-2xl mx-auto px-4 py-12">
         <div className="card">
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">

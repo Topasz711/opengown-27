@@ -139,7 +139,7 @@ const Dashboard = () => {
   const StatusIcon = currentStatus.icon
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">Dashboard</h1>
 

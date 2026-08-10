@@ -140,7 +140,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+      <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
           <p className="mt-4 text-gray-600">กำลังโหลดข้อมูล...</p>
@@ -150,7 +150,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -163,7 +163,7 @@ const AdminDashboard = () => {
           <div className="card bg-white">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-blue-100 rounded-lg">
-                <Users size={24} className="text-blue-600" />
+                <Users size={24} className="text-primary" />
               </div>
               <div>
                 <p className="text-sm text-gray-500">ผู้สมัครทั้งหมด</p>
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
           <div className="card bg-white">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-red-100 rounded-lg">
-                <XCircle size={24} className="text-red-600" />
+                <XCircle size={24} className="text-color-pink" />
               </div>
               <div>
                 <p className="text-sm text-gray-500">ไม่ผ่านการคัดเลือก</p>

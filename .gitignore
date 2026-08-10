@@ -2,43 +2,39 @@
 # Dependencies
 node_modules/
 
-# Editors
-.vscode/
+# Build outputs
+dist/
+build/
+*.js
+*.css
 
-# Environment
+# Environment variables
 .env
 .env.local
 *.env.*
 
-# Logs and temp files
-*.log
-*.tmp
+# Editor/IDE files
+.vscode/
+.idea/
 *.swp
+*.swo
+*.tmp
 
-# Python
+# Logs
+*.log
+
+# Python artifacts (if any Python in project)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Build outputs
-dist/
-build/
-*.egg-info/
-
-# IDE
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Coverage
-.coverage
+# Coverage reports
 coverage/
 htmlcov/
+.coverage
 
-# Testing
-.mypy_cache/
-.pytest_cache/
+# OS generated files
+.DS_Store
+Thumbs.db
 ```

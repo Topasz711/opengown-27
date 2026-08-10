@@ -52,7 +52,7 @@ const CountdownTimer = ({ targetDate }) => {
   return (
     <div aria-label="เวลาที่เหลือก่อนปิดรับสมัคร">
       <div className="mb-5 flex items-center gap-3">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-primary">
           <Clock3 size={19} />
         </span>
 

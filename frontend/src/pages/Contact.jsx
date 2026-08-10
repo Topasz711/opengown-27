@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react'
 
 const Contact = () => {
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
           ติดต่อเรา
@@ -69,7 +69,7 @@ const Contact = () => {
                   href="https://facebook.com/OpengownCamp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 p-3 rounded-lg text-white hover:bg-blue-700 transition-colors"
+                  className="bg-primary p-3 rounded-lg text-white hover:bg-primary transition-colors"
                 >
                   <Facebook size={24} />
                 </a>
@@ -77,7 +77,7 @@ const Contact = () => {
                   href="https://instagram.com/opengowncamp/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-pink-600 p-3 rounded-lg text-white hover:bg-pink-700 transition-colors"
+                  className="bg-color-pink p-3 rounded-lg text-white hover:bg-pink-700 transition-colors"
                 >
                   <Instagram size={24} />
                 </a>
