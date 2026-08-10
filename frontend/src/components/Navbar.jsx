@@ -12,7 +12,7 @@ const Navbar = () => {
     { path: '/', label: 'หน้าหลัก' },
     { path: '/timeline', label: 'กำหนดการ' },
     { path: '/activities', label: 'กิจกรรม' },
-    { path: '/schedule', label: 'ตารางค่าย' },
+    { path: '/schedule', label: 'ตารางกิจกรรม' },
     { path: '/faq', label: 'FAQ' },
     { path: '/contact', label: 'ติดต่อเรา' },
   ]
