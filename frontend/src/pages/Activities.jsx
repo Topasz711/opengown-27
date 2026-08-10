@@ -8,7 +8,7 @@ const Activities = () => {
       title: 'Pre-Clinical',
       description: 'เรียนรู้ Lab ต่างๆ เหมือนนักศึกษาแพทย์ชั้นพรีคลินิก ได้ลงมือทำจริงจากอาจารย์ผู้เชี่ยวชาญ',
       icon: Stethoscope,
-      color: 'bg-blue-500',
+      color: 'bg-primary',
       image: '/images/gross-anatomy.jpg'
     },
     {
@@ -16,7 +16,7 @@ const Activities = () => {
       title: 'Clinic',
       description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR เข้าเผือก ฯลฯ จากพี่ ๆ นศพ',
       icon: Heart,
-      color: 'bg-red-500',
+      color: 'bg-color-pink',
       image: '/images/clinical-skills.jpg'
     },
     {
@@ -24,7 +24,7 @@ const Activities = () => {
       title: 'Hospital Tour',
       description: 'ทัวร์รถพยาบาล และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
       icon: Hospital,
-      color: 'bg-green-500',
+      color: 'bg-color-teal',
       image: '/images/hospital-tour.jpg'
     },
     {
@@ -32,7 +32,7 @@ const Activities = () => {
       title: 'Med Talk',
       description: 'การแชร์ประสบการณ์จากอาจารย์หมอและพี่ๆ นศพ. เกี่ยวกับชีวิตการเรียนแพทย์และการทำงานในโรงพยาบาล',
       icon: Users,
-      color: 'bg-purple-500',
+      color: 'bg-color-blue',
       image: '/images/talk.jpg'
     },
     {
@@ -40,7 +40,7 @@ const Activities = () => {
       title: 'Recreation & Games',
       description: 'กิจกรรมสันทนาการสานสัมพันธ์ เล่นเกมสนุกๆ กับเพื่อนใหม่มากมาย',
       icon: Drama,
-      color: 'bg-orange-500',
+      color: 'bg-accent',
       image: '/images/recreation.jpg'
     },
     {
@@ -48,13 +48,13 @@ const Activities = () => {
       title: 'PBL case',
       description: 'เป็นกิจกรรมที่ทำให้น้อง ๆ ได้ฝึกทักษะการคิดวิเคราะห์ วินิจฉัยโรค ร่วมกับเพื่อน ๆ ในกลุ่ม ด้วยกระบวนการ Problem base learning ผ่านละครที่สอดแทรกทั้งความรู้และความสนุก',
       icon: Drama,
-      color: 'bg-pink-500',
+      color: 'bg-secondary',
       image: '/images/drama.jpg'
     }
   ]
 
   return (
-    <div className="py-12 bg-gradient-to-b from-white to-blue-50 pt-24">
+    <div className="py-12 bg-gradient-to-b from-white to-color-light pt-24">
       <h2 className="section-title">What's in Opengown</h2>
       <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
         ค่าย Opengown Camp 27th มีกิจกรรมหลากหลายที่จะทำให้น้องๆ ได้สัมผัสประสบการณ์จริง

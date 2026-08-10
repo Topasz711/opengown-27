@@ -44,7 +44,7 @@ const FAQ = () => {
   ]
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-color-light to-white">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
           คำถามที่พบบ่อย (FAQ)

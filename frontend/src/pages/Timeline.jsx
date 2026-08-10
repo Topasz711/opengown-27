@@ -2,7 +2,7 @@ import React from 'react'
 
 const TimelinePage = () => {
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-white to-blue-50">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-white to-color-light">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
           กำหนดการรับสมัคร
@@ -24,21 +24,21 @@ const TimelinePage = () => {
                 endDate: '19 กันยายน 2569, 23:59 น.',
                 description: 'ช่วงเวลารับสมัครเข้าร่วมค่ายออนไลน์',
                 status: 'current',
-                color: 'bg-blue-500'
+                color: 'bg-primary'
               },
               {
                 title: 'ประกาศผลคัดเลือก',
                 date: '1 ตุลาคม 2569',
                 description: 'ประกาศรายชื่อผู้ผ่านการคัดเลือกรอบแรก',
                 status: 'upcoming',
-                color: 'bg-green-500'
+                color: 'bg-secondary'
               },
               {
                 title: 'ยืนยันสิทธิ์',
                 date: '1-5 ตุลาคม 2569',
                 description: 'ชำระเงินและส่งเอกสารยืนยันสิทธิ์',
                 status: 'upcoming',
-                color: 'bg-orange-500'
+                color: 'bg-accent'
               },
               {
                 title: 'วันจัดค่าย',
@@ -58,7 +58,7 @@ const TimelinePage = () => {
                 </div>
 
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className={`card ${item.highlight ? 'border-l-4 border-accent bg-yellow-50' : ''}`}>
+                  <div className={`card ${item.highlight ? 'border-l-4 border-accent bg-color-light/30' : ''}`}>
                     <div className="flex items-center gap-2 mb-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${item.color}`}>
                         {item.status === 'completed' ? 'เสร็จสิ้น' : 

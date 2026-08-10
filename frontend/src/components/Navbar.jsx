@@ -55,7 +55,7 @@ const Navbar = () => {
                   onClick={async () => {
                     await logout()
                   }}
-                  className="flex items-center space-x-2 text-red-600 hover:text-red-700"
+                  className="flex items-center space-x-2 text-color-pink hover:text-color-pink"
                 >
                   <LogOut size={20} />
                   <span>ออกจากระบบ</span>
@@ -124,7 +124,7 @@ const Navbar = () => {
                     await logout()
                     setIsOpen(false)
                   }}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-red-50"
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-color-pink hover:bg-color-pink/20"
                 >
                   ออกจากระบบ
                 </button>
