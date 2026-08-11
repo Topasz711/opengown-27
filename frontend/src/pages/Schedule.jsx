@@ -125,9 +125,6 @@ const Schedule = () => {
         <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
           <h4 className="font-bold text-yellow-800 mb-2">⚠️ หมายเหตุสำคัญ</h4>
           <ul className="text-yellow-700 space-y-1 text-sm">
-            <li>• กรุณามาถึงก่อนเวลาเริ่มกิจกรรมอย่างน้อย 30 นาที</li>
-            <li>• แต่งกายด้วยชุดนักเรียนหรือชุดที่ระบุในแต่ละกิจกรรม</li>
-            <li>• เตรียมอุปกรณ์ส่วนตัวตามที่แจ้งในเอกสารยืนยันสิทธิ์</li>
             <li>• ตารางกิจกรรมอาจมีการเปลี่ยนแปลงตามความเหมาะสม</li>
           </ul>
         </div>
