@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, Facebook, Instagram } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -61,6 +61,26 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+            <div className="mt-4 flex gap-3">
+              <a
+                href="https://facebook.com/OpengownCamp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-blue-500 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={24} />
+              </a>
+              <a
+                href="https://instagram.com/opengowncamp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-pink-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={24} />
+              </a>
+            </div>
           </div>
         </div>
 

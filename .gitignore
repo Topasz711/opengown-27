@@ -1,12 +1,1 @@
-```gitignore
-# Dependencies
-node_modules/
-
-# Editors
-.vscode/
-
-# Environment
-.env
-.env.local
-*.env.*
-```
+Nothing to output - the file changes contain only source files (.jsx) and no build artifacts, dependencies, or temporary files that need to be ignored.
