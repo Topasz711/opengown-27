@@ -202,7 +202,7 @@ const Home = () => {
             to="/timeline"
             className="inline-flex items-center text-primary hover:text-secondary font-medium"
           >
-            ดูไทม์ไลน์เต็มรูปแบบ
+            กำหนดการรับสมัคร
             <Rocket className="ml-2" size={18} />
           </Link>
         </div>
@@ -212,7 +212,7 @@ const Home = () => {
       <section className="py-20 px-4 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            พร้อมจะเป็นส่วนหนึ่งของครอบครัววชิรพยาบาลหรือยัง?
+            พร้อมจะเป็นส่วนหนึ่งของค่ายเปิดเสื้อกาวน์ ครั้งที่ 27 หรือยัง?
           </h2>
           <p className="text-xl mb-8 text-white/90 leading-relaxed">
             สมัครเลยวันนี้ อย่าพลาดโอกาสดีๆ ที่จะเปลี่ยนอนาคตของคุณ
