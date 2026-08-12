@@ -66,25 +66,25 @@ const Contact = () => {
                   href="https://facebook.com/OpengownCamp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-primary p-3 rounded-lg text-white hover:bg-primary transition-colors flex items-center justify-center"
+                  className="hover:opacity-80 transition-opacity flex items-center justify-center"
                 >
-                  <img src="/facebook.jpg" alt="Facebook" className="w-6 h-6" />
+                  <img src="/facebook.jpg" alt="Facebook" className="w-12 h-12 object-contain" />
                 </a>
                 <a
                   href="https://instagram.com/opengowncamp/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-color-pink p-3 rounded-lg text-white hover:bg-pink-700 transition-colors flex items-center justify-center"
+                  className="hover:opacity-80 transition-opacity flex items-center justify-center"
                 >
-                  <img src="/instagram.jpg" alt="Instagram" className="w-6 h-6" />
+                  <img src="/instagram.jpg" alt="Instagram" className="w-12 h-12 object-contain" />
                 </a>
                 <a
                   href="https://www.tiktok.com/@opengowncamp?_r=1&_t=ZS-98p5qCuTIXt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-black p-3 rounded-lg text-white hover:bg-gray-800 transition-colors flex items-center justify-center"
+                  className="hover:opacity-80 transition-opacity flex items-center justify-center"
                 >
-                  <img src="/tiktok.jpg" alt="TikTok" className="w-6 h-6" />
+                  <img src="/tiktok.jpg" alt="TikTok" className="w-12 h-12 object-contain" />
                 </a>
               </div>
             </div>
