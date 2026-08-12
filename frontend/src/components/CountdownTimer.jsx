@@ -71,7 +71,7 @@ const CountdownTimer = ({ targetDate }) => {
               {String(unit.value).padStart(2, '0')}
             </div>
 
-            <div className="mt-2 text-[11px] font-semibold text-blue-500 sm:text-xs">
+            <div className="mt-2 text-[11px] font-semibold text-slate-900 sm:text-xs">
               {unit.label}
             </div>
           </div>
