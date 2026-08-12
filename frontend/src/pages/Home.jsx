@@ -1,5 +1,5 @@
 import React from 'react'
-import { Rocket, Heart, Users, Award, Calendar, Stethoscope, UserPlus } from 'lucide-react'
+import { Rocket, Heart, Users, Award, Calendar, Stethoscope, UserPlus, Group } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CountdownTimer from '../components/CountdownTimer'
 
@@ -146,7 +146,7 @@ const Home = () => {
                 accentColor: 'bg-primary/10 text-primary'
               },
               {
-                icon: UserPlus,
+                icon: Group,
                 title: 'กิจกรรมอัดแน่น',
                 description: 'ได้ทั้งความรู้ และความสนุก รวมถึงคำแนะนำและประสบการณ์ต่าง ๆ จากรุ่นพี่ตัวจริง',
                 color: 'bg-secondary',
