@@ -54,26 +54,6 @@ const Contact = () => {
                   <p className="text-gray-600">IG: opengowncamp</p>
                   <p className="text-gray-600">FB: Opengown Camp</p>
                   <p className="text-gray-600">TikTok: opengowncamp</p>
-                  <div className="flex gap-3 mt-3">
-                    <a
-                      href="https://instagram.com/opengowncamp/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-pink-600 hover:text-pink-700 font-medium flex items-center gap-1"
-                    >
-                      <Instagram size={18} />
-                      Instagram: @opengowncamp
-                    </a>
-                    <a
-                      href="https://facebook.com/OpengownCamp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
-                    >
-                      <Facebook size={18} />
-                      Facebook: Opengown Camp
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
