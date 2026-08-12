@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, MapPin, Facebook, Instagram } from 'lucide-react'
+import { Mail, MapPin, Facebook, Instagram, Tiktok } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -79,6 +79,15 @@ const Footer = () => {
                 aria-label="Instagram"
               >
                 <Instagram size={24} />
+              </a>
+              <a
+                href="https://tiktok.com/@opengowncamp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="TikTok"
+              >
+                <Tiktok size={24} />
               </a>
             </div>
           </div>
