@@ -155,7 +155,7 @@ const Home = () => {
               {
                 icon: Heart,
                 title: 'มิตรภาพใหม่',
-                description: 'พบเพื่อนใหม่ที่มีความฝันเดียวกัน สร้างเครือข่ายที่จะช่วยกันในอนาคต',
+                description: 'พบเพื่อนใหม่มมากมายที่พร้อมจะทำตามความฝันไปด้วยกัน',
                 color: 'bg-accent',
                 accentColor: 'bg-accent/10 text-accent'
               }
