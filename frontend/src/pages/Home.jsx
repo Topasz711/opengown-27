@@ -176,7 +176,7 @@ const Home = () => {
       {/* Timeline Preview Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">ไทม์ไลน์สำคัญ</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">TIMELINE</h2>
           <p className="text-lg text-slate-600 mb-12">
             อย่าพลาดทุกช่วงเวลาสำคัญของการสมัครเข้าร่วมค่าย
           </p>

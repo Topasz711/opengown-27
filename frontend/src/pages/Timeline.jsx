@@ -62,7 +62,7 @@ const TimelinePage = () => {
                     <div className="flex items-center gap-2 mb-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${item.color}`}>
                         {item.status === 'completed' ? 'เสร็จสิ้น' : 
-                         item.status === 'current' ? 'กำลังดำเนินการ' : 'ที่จะมาถึง'}
+                         item.status === 'current' ? 'Ongoing' : 'Upcoming'}
                       </span>
                     </div>
                     

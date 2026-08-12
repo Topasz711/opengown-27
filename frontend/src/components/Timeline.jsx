@@ -95,7 +95,7 @@ const Timeline = ({ timelineData }) => {
                         className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${item.color}`}
                       >
                         {item.status === 'completed' ? 'เสร็จสิ้น' : 
-                         item.status === 'current' ? 'กำลังดำเนินการ' : 'ที่จะมาถึง'}
+                         item.status === 'current' ? 'Ongoing' : 'Upcoming'}
                       </span>
                       {item.highlight && (
                         <span className="px-3 py-1 rounded-full text-xs font-semibold bg-accent text-white">
