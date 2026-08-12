@@ -1,12 +1,5 @@
+(frontend/src/pages/Contact.jsx is a source file, and there are no build artifacts, dependencies, or temporary files in the changes, so no .gitignore rules are needed)
+
 ```gitignore
-# Dependencies
-node_modules/
 
-# Editors
-.vscode/
-
-# Environment
-.env
-.env.local
-*.env.*
 ```
