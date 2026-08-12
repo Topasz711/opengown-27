@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white pt-12 pb-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-gray-800 text-white pt-12 pb-6" style={{
+      backgroundImage: "url('/OPG27th.png')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}>
+      <div className="absolute inset-0 bg-gray-800 opacity-90"></div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About */}
           <div>
