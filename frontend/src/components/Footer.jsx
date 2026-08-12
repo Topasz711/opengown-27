@@ -80,6 +80,15 @@ const Footer = () => {
               >
                 <Instagram size={24} />
               </a>
+              <a
+                href="https://tiktok.com/@opengowncamp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="TikTok"
+              >
+                <img src="/tiktok.jpg" alt="TikTok" className="w-6 h-6" />
+              </a>
             </div>
           </div>
         </div>
