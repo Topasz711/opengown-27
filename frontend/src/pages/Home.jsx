@@ -129,9 +129,10 @@ const Home = () => {
       <section className="py-20 px-4 bg-gradient-to-b from-color-light to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">ทำไมต้องมาค่ายนี้?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">WHY OPENGOWN ?</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              มาร่วมค้นหาคำตอบว่าชีวิตในรั้วมหาวิทยาลัยและการเรียนแพทย์ที่แท้จริงเหมาะกับเราหรือไม่
+              น้อง ๆ ที่กำลังมีเป้าหมายว่าอยากเป็นหมอ หรือกำลังค้นหาตัวตนว่าตัวเองเหมาะกับเส้นทางนี้ไหม
+              มาร่วมค้นหาคำตอบว่าคณะแพทย์เหมาะกับเราหรือไม่ได้แล้ววันนี้!
             </p>
           </div>
           
@@ -139,15 +140,15 @@ const Home = () => {
             {[
               {
                 icon: Stethoscope,
-                title: 'เรียนรู้จากของจริง',
-                description: 'ได้สัมผัสการเรียน Gross Anatomy จากอาจารย์ใหญ่จริง และฝึกหัตถการทางการแพทย์กับอุปกรณ์ที่ทันสมัย',
+                title: 'สัมผัสประสบการณ์จริง',
+                description: 'เปิดโอกาสให้น้อง ๆ ได้สัมผัสประสบการ์ณการเป็น \'นักศึกษาแพทย์\' โดยตรง ทั้งในระดับ pre-clinic และ clinic',
                 color: 'bg-primary',
                 accentColor: 'bg-primary/10 text-primary'
               },
               {
                 icon: UserPlus,
-                title: 'แนะแนวโดยรุ่นพี่',
-                description: 'ได้รับคำแนะนำตรงจากนักศึกษาแพทย์วชิรพยาบาล และอาจารย์แพทย์ผู้เชี่ยวชาญ',
+                title: 'กิจกรรมอัดแน่น',
+                description: 'ได้ทั้งความรู้ และความสนุก รวมถึงคำแนะนำและประสบการณ์ต่าง ๆ จากรุ่นพี่ตัวจริง',
                 color: 'bg-secondary',
                 accentColor: 'bg-secondary/10 text-secondary'
               },
