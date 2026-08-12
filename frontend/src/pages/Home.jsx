@@ -88,11 +88,7 @@ const Home = () => {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">เกี่ยวกับ Opengown Camp</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              ค่ายที่เปิดโอกาสให้น้องๆ มัธยมปลายได้สัมผัสประสบการณ์จริงในการเรียนคณะแพทยศาสตร์ 
-              ที่คณะแพทยศาสตร์วชิรพยาบาล มหาวิทยาลัยนวมินทราธิราช ผ่านกิจกรรมหลากหลายทั้งภาคทฤษฎีและปฏิบัติ
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">ABOUT OPENGOWNCAMP 27TH</h2>
           </div>
           
           {/* Statistics Cards */}
