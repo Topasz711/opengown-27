@@ -17,9 +17,9 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Menu */}
           <div>
-            <h3 className="text-xl font-bold mb-4">ลิงก์ด่วน</h3>
+            <h3 className="text-xl font-bold mb-4">Menu</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/timeline" className="text-gray-300 hover:text-white transition-colors">
