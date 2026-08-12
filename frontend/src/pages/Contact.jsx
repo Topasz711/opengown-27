@@ -8,12 +8,8 @@ const Contact = () => {
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
           ติดต่อเรา
         </h1>
-        <p className="text-center text-gray-600 mb-4 max-w-2xl mx-auto">
-          มีคำถามหรือข้อสงสัยเกี่ยวกับค่าย Opengown Camp 27th? 
-          ติดต่อเราได้เลย เรายินดีให้คำตอบเสมอ
-        </p>
-        <p className="text-center text-primary font-medium mb-12 max-w-2xl mx-auto">
-          แนะนำให้ติดต่อผ่านโซเชียลมีเดียเป็นหลัก ขอบคุณครับ
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          หากน้อง ๆ มีข้อสงสัยเกี่ยวกับค่ายเปิดเสื้อกาวน์ครั้งที่ 27 เพิ่มเติม สามารถติดต่อพี่ ๆ ได้ดังนี้
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
