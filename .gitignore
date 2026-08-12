@@ -1,1 +1,1 @@
-Nothing to output - the file changes contain only source files (.jsx) and no build artifacts, dependencies, or temporary files that need to be ignored.
+(frontend/src/pages/Contact.jsx is a source file, and there are no build artifacts, dependencies, or temp files in the changes, so no .gitignore rules are needed)
