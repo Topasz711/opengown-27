@@ -46,7 +46,7 @@ const TimelinePage = () => {
                 description: 'กิจกรรมค่าย Opengown Camp 27th',
                 status: 'upcoming',
                 color: 'bg-primary',
-                highlight: true
+                highlight: false
               }
             ].map((item, index) => (
               <div
@@ -58,17 +58,12 @@ const TimelinePage = () => {
                 </div>
 
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <div className={`card ${item.highlight ? 'border-l-4 border-accent bg-color-light/30' : ''}`}>
+                  <div className="card">
                     <div className="flex items-center gap-2 mb-2">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold text-white ${item.color}`}>
                         {item.status === 'completed' ? 'เสร็จสิ้น' : 
                          item.status === 'current' ? 'กำลังดำเนินการ' : 'ที่จะมาถึง'}
                       </span>
-                      {item.highlight && (
-                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-accent text-white">
-                          ไฮไลท์
-                        </span>
-                      )}
                     </div>
                     
                     <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
