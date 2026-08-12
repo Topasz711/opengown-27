@@ -31,7 +31,7 @@ const Home = () => {
             </h1>
             
             <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              ค่ายเปิดเสื้อกาวน์ ครั้งที่ 27 (Opengown Camp 27th) เปิดประสบการณ์ ค้นหาตัวตนได้ที่ คณะแพทยศาสตร์วชิรพยาบาล มหาวิทยาลัยนวมินทราธิราช
+              พบกับค่ายเปิดเสื้อกาวน์ ครั้งที่ 27 (Opengown Camp 27th) ในธีม The Gardenia Secret Door: Where Dreams Awaken เปิดประตูแห่งความฝัน พาน้อง ๆ มาทำความรู้จักกับ 'แพทย์วชิระ' มากขึ้น ผ่านกิจกรรมภายในค่ายที่อัดแน่นไปด้วยความรู้และความสนุกจากพี่ ๆ นศพ.ตัวจริง
             </p>
             
             {/* Countdown Timer with Glassmorphism */}
