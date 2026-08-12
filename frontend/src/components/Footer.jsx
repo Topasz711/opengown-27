@@ -1,7 +1,6 @@
 import React from 'react'
-import { Mail, MapPin, Facebook, Instagram } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import TikTok from './TikTokIcon'
 
 const Footer = () => {
   return (
@@ -59,31 +58,6 @@ const Footer = () => {
                 <Mail size={20} className="text-accent" />
                 <a href="mailto:opengown27@gmail.com" className="text-gray-300 hover:text-white text-sm">
                   opengown27@gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">ติดตามเราบนโซเชียลมีเดีย</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center space-x-3">
-                <Facebook size={20} className="text-accent" />
-                <a href="https://www.facebook.com/opengowncamp" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white text-sm">
-                  Facebook
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Instagram size={20} className="text-accent" />
-                <a href="https://www.instagram.com/opengowncamp" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white text-sm">
-                  Instagram
-                </a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Tiktok size={20} className="text-accent" />
-                <a href="https://www.tiktok.com/@opengowncamp?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white text-sm">
-                  TikTok
                 </a>
               </li>
             </ul>
