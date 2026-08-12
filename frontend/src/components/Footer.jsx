@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, MapPin, Facebook, Instagram } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -71,19 +71,28 @@ const Footer = () => {
                 href="https://facebook.com/OpengownCamp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-colors"
+                className="hover:opacity-80 transition-colors flex items-center justify-center"
                 aria-label="Facebook"
               >
-                <Facebook size={24} />
+                <img src="/facebook.jpg" alt="Facebook" className="w-6 h-6" />
               </a>
               <a
                 href="https://instagram.com/opengowncamp/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:opacity-80 transition-colors"
+                className="hover:opacity-80 transition-colors flex items-center justify-center"
                 aria-label="Instagram"
               >
-                <Instagram size={24} />
+                <img src="/instagram.jpg" alt="Instagram" className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@opengowncamp?_r=1&_t=ZS-98p5qCuTIXt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-colors flex items-center justify-center"
+                aria-label="TikTok"
+              >
+                <img src="/tiktok.jpg" alt="TikTok" className="w-6 h-6" />
               </a>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Contact = () => {
   return (
@@ -66,17 +66,17 @@ const Contact = () => {
                   href="https://facebook.com/OpengownCamp"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-primary p-3 rounded-lg text-white hover:bg-primary transition-colors"
+                  className="bg-primary p-3 rounded-lg text-white hover:bg-primary transition-colors flex items-center justify-center"
                 >
-                  <Facebook size={24} />
+                  <img src="/facebook.jpg" alt="Facebook" className="w-6 h-6" />
                 </a>
                 <a
                   href="https://instagram.com/opengowncamp/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-color-pink p-3 rounded-lg text-white hover:bg-pink-700 transition-colors"
+                  className="bg-color-pink p-3 rounded-lg text-white hover:bg-pink-700 transition-colors flex items-center justify-center"
                 >
-                  <Instagram size={24} />
+                  <img src="/instagram.jpg" alt="Instagram" className="w-6 h-6" />
                 </a>
                 <a
                   href="https://www.tiktok.com/@opengowncamp?_r=1&_t=ZS-98p5qCuTIXt"
