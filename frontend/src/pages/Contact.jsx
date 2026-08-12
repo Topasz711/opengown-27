@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, Phone, MapPin, Facebook, Instagram, Music } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react'
 
 const Contact = () => {
   return (
@@ -102,9 +102,9 @@ const Contact = () => {
                   href="https://www.tiktok.com/@opengowncamp?_r=1&_t=ZS-98p5qCuTIXt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-black p-3 rounded-lg text-white hover:bg-gray-800 transition-colors"
+                  className="bg-black p-3 rounded-lg text-white hover:bg-gray-800 transition-colors flex items-center justify-center"
                 >
-                  <Music size={24} />
+                  <img src="/tiktok.jpg" alt="TikTok" className="w-6 h-6" />
                 </a>
               </div>
             </div>
