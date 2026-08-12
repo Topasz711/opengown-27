@@ -95,12 +95,11 @@ const Home = () => {
           </div>
           
           {/* Statistics Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
-              { icon: Users, value: '130', label: 'ผู้เข้าร่วมต่อรุ่น', color: '#7B5948' },
-              { icon: Calendar, value: '3', label: 'วัน', color: 'bg-color-teal text-color-dark' },
-              { icon: Award, value: '10+', label: 'เวิร์กช็อป', color: 'bg-color-light text-color-dark' },
-              { icon: Heart, value: '27', label: 'ครั้งที่', color: 'bg-color-pink text-color-dark' }
+              { icon: Users, label: 'ผู้เข้าร่วม', value: '130', unit: 'คน', color: '#7B5948' },
+              { icon: Calendar, label: 'ระยะเวลาค่าย', value: '3', unit: 'วัน', color: 'bg-color-teal text-color-dark' },
+              { icon: Heart, label: 'ครั้งที่', value: '27', unit: '', color: 'bg-color-pink text-color-dark' }
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -117,8 +116,11 @@ const Home = () => {
                       </div>
                     )}
                   </div>
-                  <div className="text-3xl font-bold text-slate-800 mb-1">{stat.value}</div>
-                  <div className="text-slate-600 text-sm">{stat.label}</div>
+                  <div className="text-lg font-semibold text-slate-700 mb-1">{stat.label}</div>
+                  <div className="text-3xl font-bold text-slate-800">
+                    {stat.value}
+                    {stat.unit && <span className="ml-1">{stat.unit}</span>}
+                  </div>
                 </div>
               )
             })}
