@@ -13,7 +13,7 @@ const Contact = () => {
           ติดต่อเราได้เลย เรายินดีให้คำตอบเสมอ
         </p>
         <p className="text-center text-primary font-medium mb-12 max-w-2xl mx-auto">
-          แนะนำให้ติดต่อผ่าน Facebook หรือ Instagram เป็นหลัก ขอบคุณครับ
+          แนะนำให้ติดต่อผ่านโซเชียลมีเดียเป็นหลัก ขอบคุณครับ
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -54,9 +54,10 @@ const Contact = () => {
                   <Phone size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-800 mb-1">โทรศัพท์</h3>
-                  <p className="text-gray-600">ติดต่อผ่าน Facebook หรือ Instagram</p>
-                  <p className="text-sm text-gray-500">จันทร์-ศุกร์ 09:00-17:00 น.</p>
+                  <h3 className="font-bold text-gray-800 mb-1">สอบถามเพิ่มเติม</h3>
+                  <p className="text-gray-600">IG: opengowncamp</p>
+                  <p className="text-gray-600">FB: Opengown Camp</p>
+                  <p className="text-gray-600">TikTok: opengowncamp</p>
                 </div>
               </div>
             </div>
