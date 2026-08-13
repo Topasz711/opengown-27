@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stethoscope, Heart, Hospital, Users, Gamepad2, Brain } from 'lucide-react'
+import { Stethoscope, Heart, Hospital, Users, Gamepad2, Drama } from 'lucide-react'
 
 const Activities = () => {
   const activities = [
@@ -47,7 +47,7 @@ const Activities = () => {
       id: 6,
       title: 'PBL case',
       description: 'เป็นกิจกรรมที่ทำให้น้อง ๆ ได้ฝึกทักษะการคิดวิเคราะห์ วินิจฉัยโรค ร่วมกับเพื่อน ๆ ในกลุ่ม ด้วยกระบวนการ Problem base learning ผ่านละครที่สอดแทรกทั้งความรู้และความสนุก',
-      icon: Brain,
+      icon: Drama,
       color: 'bg-secondary',
       image: '/images/drama.jpg'
     }
