@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stethoscope, Heart, Hospital, Users, Drama } from 'lucide-react'
+import { Stethoscope, Heart, Hospital, Users, Theater, Gamepad2 } from 'lucide-react'
 
 const Activities = () => {
   const activities = [
@@ -14,7 +14,7 @@ const Activities = () => {
     {
       id: 2,
       title: 'Clinic',
-      description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR เข้าเผือก ฯลฯ จากพี่ ๆ นศพ',
+      description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR ฯลฯ จากพี่ ๆ นศพ',
       icon: Heart,
       color: 'bg-color-pink',
       image: '/images/clinical-skills.jpg'
@@ -22,7 +22,7 @@ const Activities = () => {
     {
       id: 3,
       title: 'Hospital Tour',
-      description: 'ทัวร์รถพยาบาล และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
+      description: 'ทัวร์แผนกผู้ป่วยนอก (OPD) และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
       icon: Hospital,
       color: 'bg-color-teal',
       image: '/images/hospital-tour.jpg'
@@ -39,7 +39,7 @@ const Activities = () => {
       id: 5,
       title: 'Recreation & Games',
       description: 'กิจกรรมสันทนาการสานสัมพันธ์ เล่นเกมสนุกๆ กับเพื่อนใหม่มากมาย',
-      icon: Drama,
+      icon: Gamepad2,
       color: 'bg-accent',
       image: '/images/recreation.jpg'
     },
@@ -47,7 +47,7 @@ const Activities = () => {
       id: 6,
       title: 'PBL case',
       description: 'เป็นกิจกรรมที่ทำให้น้อง ๆ ได้ฝึกทักษะการคิดวิเคราะห์ วินิจฉัยโรค ร่วมกับเพื่อน ๆ ในกลุ่ม ด้วยกระบวนการ Problem base learning ผ่านละครที่สอดแทรกทั้งความรู้และความสนุก',
-      icon: Drama,
+      icon: Theater,
       color: 'bg-secondary',
       image: '/images/drama.jpg'
     }
