@@ -122,11 +122,8 @@ const Schedule = () => {
         </div>
 
         {/* Important Notice */}
-        <div className="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-          <h4 className="font-bold text-yellow-800 mb-2">⚠️ หมายเหตุสำคัญ</h4>
-          <ul className="text-yellow-700 space-y-1 text-sm">
-            <li>• ตารางกิจกรรมอาจมีการเปลี่ยนแปลงตามความเหมาะสม</li>
-          </ul>
+        <div className="mt-8 text-gray-600 text-sm">
+          <p>หมายเหตุ : ตารางกิจกรรมอาจมีการเปลี่ยนแปลงตามความเหมาะสม</p>
         </div>
       </div>
     </div>
