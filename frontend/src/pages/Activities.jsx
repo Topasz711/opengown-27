@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stethoscope, Heart, Hospital, Users, Drama, Dice } from 'lucide-react'
+import { Stethoscope, Heart, Hospital, Users, Theater, Gamepad2 } from 'lucide-react'
 
 const Activities = () => {
   const activities = [
@@ -39,7 +39,7 @@ const Activities = () => {
       id: 5,
       title: 'Recreation & Games',
       description: 'กิจกรรมสันทนาการสานสัมพันธ์ เล่นเกมสนุกๆ กับเพื่อนใหม่มากมาย',
-      icon: Dice,
+      icon: Gamepad2,
       color: 'bg-accent',
       image: '/images/recreation.jpg'
     },
@@ -47,7 +47,7 @@ const Activities = () => {
       id: 6,
       title: 'PBL case',
       description: 'เป็นกิจกรรมที่ทำให้น้อง ๆ ได้ฝึกทักษะการคิดวิเคราะห์ วินิจฉัยโรค ร่วมกับเพื่อน ๆ ในกลุ่ม ด้วยกระบวนการ Problem base learning ผ่านละครที่สอดแทรกทั้งความรู้และความสนุก',
-      icon: Drama,
+      icon: Theater,
       color: 'bg-secondary',
       image: '/images/drama.jpg'
     }
