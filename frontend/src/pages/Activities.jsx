@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stethoscope, Heart, Hospital, Users, Drama } from 'lucide-react'
+import { Stethoscope, Heart, Hospital, Users, Drama, Dice } from 'lucide-react'
 
 const Activities = () => {
   const activities = [
@@ -14,7 +14,7 @@ const Activities = () => {
     {
       id: 2,
       title: 'Clinic',
-      description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR เข้าเผือก ฯลฯ จากพี่ ๆ นศพ',
+      description: 'Workshop หัตถการทางการแพทย์พื้นฐาน เช่น การเจาะเลือด CPR ฯลฯ จากพี่ ๆ นศพ',
       icon: Heart,
       color: 'bg-color-pink',
       image: '/images/clinical-skills.jpg'
@@ -22,7 +22,7 @@ const Activities = () => {
     {
       id: 3,
       title: 'Hospital Tour',
-      description: 'ทัวร์รถพยาบาล และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
+      description: 'ทัวร์แผนกผู้ป่วยนอก (OPD) และห้องผ่าตัด (OR) เรียนรู้เกี่ยวกับสหวิชาชีพ',
       icon: Hospital,
       color: 'bg-color-teal',
       image: '/images/hospital-tour.jpg'
@@ -39,7 +39,7 @@ const Activities = () => {
       id: 5,
       title: 'Recreation & Games',
       description: 'กิจกรรมสันทนาการสานสัมพันธ์ เล่นเกมสนุกๆ กับเพื่อนใหม่มากมาย',
-      icon: Drama,
+      icon: Dice,
       color: 'bg-accent',
       image: '/images/recreation.jpg'
     },
