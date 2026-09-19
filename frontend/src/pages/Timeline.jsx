@@ -21,21 +21,21 @@ const TimelinePage = () => {
               {
                 title: 'เปิดรับสมัคร',
                 date: '15 สิงหาคม 2569',
-                endDate: '19 กันยายน 2569, 23:59 น.',
+                endDate: '26 กันยายน 2569, 23:59 น.',
                 description: 'ช่วงเวลารับสมัครเข้าร่วมค่ายออนไลน์',
                 status: 'current',
                 color: 'bg-primary'
               },
               {
                 title: 'ประกาศผลคัดเลือก',
-                date: '1 ตุลาคม 2569',
+                date: '6 ตุลาคม 2569',
                 description: 'ประกาศรายชื่อผู้ผ่านการคัดเลือกรอบแรก',
                 status: 'upcoming',
                 color: 'bg-secondary'
               },
               {
                 title: 'ยืนยันสิทธิ์',
-                date: '1-5 ตุลาคม 2569',
+                date: '6-10 ตุลาคม 2569',
                 description: 'ชำระเงินและส่งเอกสารยืนยันสิทธิ์',
                 status: 'upcoming',
                 color: 'bg-accent'
