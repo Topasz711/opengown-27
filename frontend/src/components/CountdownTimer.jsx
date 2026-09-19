@@ -85,7 +85,7 @@ const CountdownTimer = ({ targetDate }) => {
         />
 
         <span>
-          ปิดรับสมัคร{' '}
+          ขยายวันรับสมัครถึง{' '}
           <strong className="font-semibold text-slate-700">
             {deadlineText}
           </strong>

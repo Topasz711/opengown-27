@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import CountdownTimer from '../components/CountdownTimer'
 
 const Home = () => {
-  const applicationDeadline = '2026-09-19T23:59:59+07:00'
+  const applicationDeadline = '2026-09-26T23:59:59+07:00'
   
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
@@ -183,9 +183,9 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             {[
-              { step: '', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 19 กันยายน 2569', color: 'border-primary' },
-              { step: '', title: 'ประกาศผล', desc: '1 ตุลาคม 2569', color: 'border-secondary' },
-              { step: '', title: 'ประกาศผลสำรอง', desc: '6 ตุลาคม 2569', color: 'border-accent' },
+              { step: '', title: 'เปิดรับสมัคร', desc: '15 สิงหาคม 2569 - 26 กันยายน 2569', color: 'border-primary' },
+              { step: '', title: 'ประกาศผล', desc: '6 ตุลาคม 2569', color: 'border-secondary' },
+              { step: '', title: 'ประกาศผลสำรอง', desc: '11 ตุลาคม 2569', color: 'border-accent' },
               { step: '', title: 'วันจัดค่าย', desc: '6-8 พฤศจิกายน 2569', color: 'border-color-blue' }
             ].map((item, index) => (
               <div key={index} className={`relative p-6 border-l-4 ${item.color} bg-slate-50 rounded-r-xl`}>
