@@ -27,7 +27,10 @@ const CountdownTimer = ({ targetDate }) => {
           className="mx-auto mb-3 text-slate-400"
         />
         <p className="font-semibold text-slate-700">
-          หมดเขตรับสมัครแล้ว
+          ประกาศผลแล้ว
+        </p>
+        <p className="mt-1 text-sm text-slate-500">
+          สามารถตรวจสอบในอีเมลได้เลยค่ะ
         </p>
       </div>
     )
